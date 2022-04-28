@@ -16,6 +16,7 @@ namespace Unity.FPS.Game
         public static AmmoPickupEvent AmmoPickupEvent = new AmmoPickupEvent();
         public static DamageEvent DamageEvent = new DamageEvent();
         public static DisplayMessageEvent DisplayMessageEvent = new DisplayMessageEvent();
+        public static EnemyHitEvent EnemyHitEvent = new EnemyHitEvent();
     }
 
     public class ObjectiveUpdateEvent : GameEvent
@@ -62,5 +63,11 @@ namespace Unity.FPS.Game
     {
         public string Message;
         public float DelayBeforeDisplay;
+    }
+
+    public class EnemyHitEvent : GameEvent
+    {
+        public GameObject Enemy;
+        public float HealthLevel;
     }
 }
