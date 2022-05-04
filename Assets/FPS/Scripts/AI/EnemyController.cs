@@ -348,7 +348,6 @@ namespace Unity.FPS.AI
                 
                 onDamaged?.Invoke();
                 m_LastTimeDamaged = Time.time;
-                m_EnemyManager.HittedEnemy(m_Health.CurrentHealth, this);
 
                 // play the damage tick sound
                 if (DamageTick && !m_WasDamagedThisFrame)

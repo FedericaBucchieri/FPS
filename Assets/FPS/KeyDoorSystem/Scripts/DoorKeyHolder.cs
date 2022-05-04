@@ -14,6 +14,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /*
  * Added to Player to Hold keys
@@ -23,10 +24,17 @@ public class DoorKeyHolder : MonoBehaviour
     
     public event EventHandler OnDoorKeyAdded;
     public event EventHandler OnDoorKeyUsed;
+
+    public GameObject keyImage;
     
     [Header("Key Holder")]
     [Tooltip("List of Keys currently being held")]
     public List<Key> doorKeyHoldingList = new List<Key>();
+
+    private void Start()
+    {
+        keyImage.SetActive(false);
+    }
 
     void OnTriggerEnter(Collider collider) 
     {
@@ -35,6 +43,7 @@ public class DoorKeyHolder : MonoBehaviour
         {
             doorKeyHoldingList.Add(doorKey.key);
             doorKey.DestroySelf();
+            keyImage.SetActive(true);
             OnDoorKeyAdded?.Invoke(this, EventArgs.Empty);
         }
 

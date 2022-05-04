@@ -22,13 +22,6 @@ namespace Unity.FPS.AI
             NumberOfEnemiesTotal++;
         }
 
-        public void HittedEnemy(float healthLevel, EnemyController enemyHitted)
-        {
-            EnemyHitEvent evt = Events.EnemyHitEvent;
-            evt.Enemy = enemyHitted.gameObject;
-            evt.HealthLevel = healthLevel;
-            EventManager.Broadcast(evt);
-        }
 
         public void UnregisterEnemy(EnemyController enemyKilled)
         {

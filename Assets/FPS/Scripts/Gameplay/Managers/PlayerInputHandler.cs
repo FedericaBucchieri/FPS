@@ -109,6 +109,7 @@ namespace Unity.FPS.Gameplay
             if (CanProcessInput())
             {
                 bool isGamepad = Input.GetAxis(GameConstants.k_ButtonNameGamepadFire) != 0f;
+
                 if (isGamepad)
                 {
                     return Input.GetAxis(GameConstants.k_ButtonNameGamepadFire) >= TriggerAxisThreshold;
@@ -127,6 +128,7 @@ namespace Unity.FPS.Gameplay
             if (CanProcessInput())
             {
                 bool isGamepad = Input.GetAxis(GameConstants.k_ButtonNameGamepadAim) != 0f;
+
                 bool i = isGamepad
                     ? (Input.GetAxis(GameConstants.k_ButtonNameGamepadAim) > 0f)
                     : Input.GetButton(GameConstants.k_ButtonNameAim);

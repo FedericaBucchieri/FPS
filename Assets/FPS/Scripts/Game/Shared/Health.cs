@@ -23,9 +23,19 @@ namespace Unity.FPS.Game
 
         bool m_IsDead;
 
+        [Tooltip("Health Current Value is provided randomly at the start of the game")]
+        public bool m_isRandom = false;
+
         void Start()
         {
-            CurrentHealth = MaxHealth;
+            if(m_isRandom)
+            {
+                CurrentHealth = Random.Range(10, MaxHealth);
+            }
+            else
+            {
+                CurrentHealth = MaxHealth;
+            }
         }
 
         public void Heal(float healAmount)
@@ -71,7 +81,7 @@ namespace Unity.FPS.Game
             HandleDeath();
         }
 
-        void HandleDeath()
+        public void HandleDeath()
         {
             if (m_IsDead)
                 return;

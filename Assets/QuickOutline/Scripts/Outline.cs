@@ -9,6 +9,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.FPS.Game;
 using UnityEngine;
 
 [DisallowMultipleComponent]
@@ -47,6 +48,9 @@ public class Outline : MonoBehaviour {
       needsUpdate = true;
     }
   }
+
+    public Health Health;
+    public bool isHealth = true;
 
   [Serializable]
   private class ListVector3 {
@@ -130,12 +134,35 @@ public class Outline : MonoBehaviour {
   }
 
   void Update() {
-    if (needsUpdate) {
-      needsUpdate = false;
 
-      UpdateMaterialProperties();
+        if (isHealth){
+            // update health bar value
+            float healthPercentage = Health.CurrentHealth / Health.MaxHealth;
+
+            if (healthPercentage < 0.3)
+            {
+                outlineColor = Color.red;
+                needsUpdate = true;
+            }
+            else if (healthPercentage > 0.3 && healthPercentage < 0.6)
+            {
+                outlineColor = Color.yellow;
+                needsUpdate = true;
+            }
+            else
+            {
+                outlineColor = Color.green;
+                needsUpdate = true;
+            }
+        }
+
+        if (needsUpdate)
+        {
+            needsUpdate = false;
+            UpdateMaterialProperties();
+        }
+
     }
-  }
 
   void OnDisable() {
     foreach (var renderer in renderers) {
@@ -306,4 +333,6 @@ public class Outline : MonoBehaviour {
         break;
     }
   }
+
+
 }

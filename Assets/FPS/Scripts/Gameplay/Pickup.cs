@@ -62,6 +62,7 @@ namespace Unity.FPS.Gameplay
             }
         }
 
+
         protected virtual void OnPicked(PlayerCharacterController playerController)
         {
             PlayPickupFeedback();

@@ -13,10 +13,10 @@ namespace Unity.FPS.Game
         public static PlayerDeathEvent PlayerDeathEvent = new PlayerDeathEvent();
         public static EnemyKillEvent EnemyKillEvent = new EnemyKillEvent();
         public static PickupEvent PickupEvent = new PickupEvent();
+        public static PickupResourceEvent PickupResourceEvent = new PickupResourceEvent();
         public static AmmoPickupEvent AmmoPickupEvent = new AmmoPickupEvent();
         public static DamageEvent DamageEvent = new DamageEvent();
         public static DisplayMessageEvent DisplayMessageEvent = new DisplayMessageEvent();
-        public static EnemyHitEvent EnemyHitEvent = new EnemyHitEvent();
     }
 
     public class ObjectiveUpdateEvent : GameEvent
@@ -48,6 +48,11 @@ namespace Unity.FPS.Game
         public GameObject Pickup;
     }
 
+    public class PickupResourceEvent : GameEvent
+    {
+        public GameObject Pickup;
+    }
+
     public class AmmoPickupEvent : GameEvent
     {
         public WeaponController Weapon;
@@ -65,9 +70,4 @@ namespace Unity.FPS.Game
         public float DelayBeforeDisplay;
     }
 
-    public class EnemyHitEvent : GameEvent
-    {
-        public GameObject Enemy;
-        public float HealthLevel;
-    }
 }
