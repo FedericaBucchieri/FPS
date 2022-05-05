@@ -24,9 +24,11 @@ public class DoorKeyHolder : MonoBehaviour
     
     public event EventHandler OnDoorKeyAdded;
     public event EventHandler OnDoorKeyUsed;
-
+    public GameObject door;
     public GameObject keyImage;
-    
+    public GameObject objectiveImage;
+    public Sprite doorSprite;
+
     [Header("Key Holder")]
     [Tooltip("List of Keys currently being held")]
     public List<Key> doorKeyHoldingList = new List<Key>();
@@ -44,6 +46,7 @@ public class DoorKeyHolder : MonoBehaviour
             doorKeyHoldingList.Add(doorKey.key);
             doorKey.DestroySelf();
             keyImage.SetActive(true);
+            activateNewObjective();
             OnDoorKeyAdded?.Invoke(this, EventArgs.Empty);
         }
 
@@ -61,6 +64,14 @@ public class DoorKeyHolder : MonoBehaviour
                 OnDoorKeyUsed?.Invoke(this, EventArgs.Empty);
             }
         }
+    }
+
+    void activateNewObjective()
+    {
+        //activate new objective
+        door.SetActive(true);
+
+        objectiveImage.GetComponent<Image>().sprite = doorSprite;
     }
 
 }

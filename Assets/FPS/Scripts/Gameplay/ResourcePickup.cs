@@ -50,8 +50,6 @@ namespace Unity.FPS.Gameplay
                 {
                     PickupResourceEvent evt = Events.PickupResourceEvent;
                     evt.Pickup = gameObject;
-                    Debug.Log("è il game object : " + gameObject);
-                    Debug.Log("entrata in un " + (ResourcePickup.Type)evt.Pickup.GetComponent<ResourcePickup>().type);
                     EventManager.Broadcast(evt);
                 }
             }
