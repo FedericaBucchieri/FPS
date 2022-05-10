@@ -4417,6 +4417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: {fileID: 1842592959}
+  isHealth: 1
   outlineMode: 3
   outlineColor: {r: 0, g: 1, b: 0, a: 1}
   outlineWidth: 2
@@ -14652,7 +14653,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: {fileID: 6370966071075595701}
-  outlineMode: 3
+  isHealth: 1
+  outlineMode: 1
   outlineColor: {r: 0, g: 1, b: 0, a: 1}
   outlineWidth: 2
   precomputeOutline: 0
@@ -19758,6 +19760,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: {fileID: 375053738}
+  isHealth: 1
   outlineMode: 3
   outlineColor: {r: 0, g: 1, b: 0, a: 1}
   outlineWidth: 2
@@ -24521,6 +24524,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: {fileID: 180242071}
+  isHealth: 1
   outlineMode: 3
   outlineColor: {r: 0, g: 1, b: 0, a: 1}
   outlineWidth: 2
@@ -31264,6 +31268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: {fileID: 1726172224}
+  isHealth: 1
   outlineMode: 3
   outlineColor: {r: 0, g: 1, b: 0, a: 1}
   outlineWidth: 2
@@ -35080,6 +35085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: {fileID: 989297286}
+  isHealth: 1
   outlineMode: 3
   outlineColor: {r: 0, g: 1, b: 0, a: 1}
   outlineWidth: 2
@@ -43306,6 +43312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: {fileID: 2143107287}
+  isHealth: 1
   outlineMode: 3
   outlineColor: {r: 0, g: 1, b: 0, a: 1}
   outlineWidth: 2
@@ -53987,6 +53994,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: {fileID: 1713715078}
+  isHealth: 1
   outlineMode: 3
   outlineColor: {r: 0, g: 1, b: 0, a: 1}
   outlineWidth: 2
@@ -56116,6 +56124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: {fileID: 1627081081}
+  isHealth: 1
   outlineMode: 3
   outlineColor: {r: 0, g: 1, b: 0, a: 1}
   outlineWidth: 2
@@ -59070,7 +59079,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: {fileID: 2002030185}
-  outlineMode: 3
+  isHealth: 1
+  outlineMode: 1
   outlineColor: {r: 0, g: 1, b: 0, a: 1}
   outlineWidth: 2
   precomputeOutline: 0
@@ -59838,6 +59848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: {fileID: 85896443}
+  isHealth: 1
   outlineMode: 3
   outlineColor: {r: 0, g: 1, b: 0, a: 1}
   outlineWidth: 2

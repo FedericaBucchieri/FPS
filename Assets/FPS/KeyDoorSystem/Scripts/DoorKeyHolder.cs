@@ -24,10 +24,12 @@ public class DoorKeyHolder : MonoBehaviour
     
     public event EventHandler OnDoorKeyAdded;
     public event EventHandler OnDoorKeyUsed;
+    // The corresponding door of the key
     public GameObject door;
+    // UI image of the key for feeback purposes
     public GameObject keyImage;
-    public GameObject objectiveImage;
-    public Sprite doorSprite;
+
+
 
     [Header("Key Holder")]
     [Tooltip("List of Keys currently being held")]
@@ -43,10 +45,19 @@ public class DoorKeyHolder : MonoBehaviour
         DoorKey doorKey = collider.GetComponent<DoorKey>();
         if (doorKey != null) 
         {
+            // add the key to the list of keys of the player
             doorKeyHoldingList.Add(doorKey.key);
-            doorKey.DestroySelf();
+
+            // Display the Key Image on the UI for feedback
             keyImage.SetActive(true);
-            activateNewObjective();
+
+            // get the missionWaypoint component from the player instance to change the objective
+            MissionWaypoint mission = GetComponent<MissionWaypoint>();
+            // change the mission
+            mission.changeObjective(door);
+
+            //destroy the key
+            doorKey.DestroySelf();
             OnDoorKeyAdded?.Invoke(this, EventArgs.Empty);
         }
 
@@ -66,12 +77,5 @@ public class DoorKeyHolder : MonoBehaviour
         }
     }
 
-    void activateNewObjective()
-    {
-        //activate new objective
-        door.SetActive(true);
-
-        objectiveImage.GetComponent<Image>().sprite = doorSprite;
     }
 
-}

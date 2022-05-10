@@ -14,6 +14,11 @@ public class MissionWaypoint : MonoBehaviour
     public Vector3 offset;
     // The player transform
     public GameObject player;
+    // meter text 
+    public Text meter;
+
+    // UI sprite for the second objective: the door
+    public Sprite doorSprite;
 
     private void Update()
     {
@@ -55,5 +60,16 @@ public class MissionWaypoint : MonoBehaviour
         // Update the marker's position
         img.transform.position = pos;
 
+        // Change the meter text to the distance with the meter unit 'm'
+        meter.text = ((int)Vector3.Distance(target.position, player.transform.position)).ToString() + "m";
+
+    }
+
+
+    public void changeObjective(GameObject newtarget)
+    {
+         //activate new objective
+         target = newtarget.transform;
+         img.GetComponent<Image>().sprite = doorSprite;
     }
 }
