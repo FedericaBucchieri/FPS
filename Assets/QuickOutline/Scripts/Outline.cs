@@ -327,8 +327,8 @@ public class Outline : MonoBehaviour {
         break;
 
       case Mode.SilhouetteOnly:
-        outlineMaskMaterial.SetFloat("_ZTest", (float)UnityEngine.Rendering.CompareFunction.LessEqual);
-        outlineFillMaterial.SetFloat("_ZTest", (float)UnityEngine.Rendering.CompareFunction.Greater);
+        outlineMaskMaterial.SetFloat("_ZTest", (float)UnityEngine.Rendering.CompareFunction.Greater);
+        outlineFillMaterial.SetFloat("_ZTest", (float)UnityEngine.Rendering.CompareFunction.LessEqual);
         outlineFillMaterial.SetFloat("_OutlineWidth", 0f);
         break;
     }

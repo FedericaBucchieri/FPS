@@ -8,6 +8,7 @@ namespace Unity.FPS.Gameplay
     [RequireComponent(typeof(PlayerInputHandler))]
     public class PlayerWeaponsManager : MonoBehaviour
     {
+
         public enum WeaponSwitchState
         {
             Up,
@@ -93,6 +94,9 @@ namespace Unity.FPS.Gameplay
         WeaponSwitchState m_WeaponSwitchState;
         int m_WeaponSwitchNewWeaponIndex;
 
+        [Tooltip("UI element for the Health Kill Range of enemies - if active")]
+        public HealthKillRangeUI m_healthKillRangeUI;
+
         void Start()
         {
             ActiveWeaponIndex = -1;
@@ -102,9 +106,13 @@ namespace Unity.FPS.Gameplay
             DebugUtility.HandleErrorIfNullGetComponent<PlayerInputHandler, PlayerWeaponsManager>(m_InputHandler, this,
                 gameObject);
 
+
+
             m_PlayerCharacterController = GetComponent<PlayerCharacterController>();
             DebugUtility.HandleErrorIfNullGetComponent<PlayerCharacterController, PlayerWeaponsManager>(
                 m_PlayerCharacterController, this, gameObject);
+
+            //healthKillRangeUIManager = GameObject.FindObjectOfType<HealthKillRangeUIManager>();
 
             SetFov(DefaultFov);
 
@@ -184,6 +192,16 @@ namespace Unity.FPS.Gameplay
                     if (hit.collider.GetComponentInParent<Health>() != null)
                     {
                         IsPointingAtEnemy = true;
+
+                        // @Fede Handling Health Kill Range
+                        float max = hit.collider.GetComponentInParent<Health>().HealthKillRangeMax;
+                        float min = hit.collider.GetComponentInParent<Health>().HealthKillRangeMin;
+                        m_healthKillRangeUI.showKillRange(min, max);
+
+                    }
+                    else
+                    {
+                        m_healthKillRangeUI.hideKillRange();
                     }
                 }
             }
@@ -556,5 +574,6 @@ namespace Unity.FPS.Gameplay
                 newWeapon.ShowWeapon(true);
             }
         }
+
     }
 }

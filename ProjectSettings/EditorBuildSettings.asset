@@ -6,16 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/FPS/Scenes/IntroMenu.unity
+    path: Assets/FPS/Scenes/Menu Scenes/IntroMenu.unity
     guid: 56e3faabc5bb30f49a68bb8f1292f988
   - enabled: 1
-    path: Assets/FPS/Scenes/WinScene.unity
+    path: Assets/FPS/Scenes/Menu Scenes/WinScene.unity
     guid: 037d06fbede2b4041a843d9ee6fe750c
   - enabled: 1
-    path: Assets/FPS/Scenes/LoseScene.unity
+    path: Assets/FPS/Scenes/Menu Scenes/LoseScene.unity
     guid: 72e5c65a45893714484002914e3fd521
   - enabled: 1
-    path: Assets/FPS/Scenes/Level 1 - Around.unity
+    path: Assets/FPS/Scenes/Health Visualization/Health - Around.unity
     guid: 71240627837414c42a49bfb71589305d
   - enabled: 1
     path: Assets/FPS/Scenes/MainScene.unity

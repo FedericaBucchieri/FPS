@@ -14,6 +14,7 @@ namespace Unity.FPS.AI
         }
 
         public Animator Animator;
+        public Animator SecondAnimator;
 
         [Tooltip("Fraction of the enemy's attack range at which it will stop moving towards target while attacking")]
         [Range(0f, 1f)]
@@ -68,6 +69,11 @@ namespace Unity.FPS.AI
 
             // Update animator speed parameter
             Animator.SetFloat(k_AnimMoveSpeedParameter, moveSpeed);
+
+            if(SecondAnimator != null)
+            {
+                SecondAnimator.SetFloat(k_AnimMoveSpeedParameter, moveSpeed);
+            }
 
             // changing the pitch of the movement sound depending on the movement speed
             m_AudioSource.pitch = Mathf.Lerp(PitchDistortionMovementSpeed.Min, PitchDistortionMovementSpeed.Max,
@@ -134,6 +140,11 @@ namespace Unity.FPS.AI
         void OnAttack()
         {
             Animator.SetTrigger(k_AnimAttackParameter);
+
+            if(SecondAnimator != null)
+            {
+                SecondAnimator.SetTrigger(k_AnimAttackParameter);
+            }
         }
 
         void OnDetectedTarget()
@@ -154,6 +165,11 @@ namespace Unity.FPS.AI
             }
 
             Animator.SetBool(k_AnimAlertedParameter, true);
+
+            if (SecondAnimator != null)
+            {
+                SecondAnimator.SetBool(k_AnimAlertedParameter, true);
+            }
         }
 
         void OnLostTarget()
@@ -169,6 +185,11 @@ namespace Unity.FPS.AI
             }
 
             Animator.SetBool(k_AnimAlertedParameter, false);
+
+            if (SecondAnimator != null)
+            {
+                SecondAnimator.SetBool(k_AnimAlertedParameter, false);
+            }
         }
 
         void OnDamaged()
@@ -180,6 +201,11 @@ namespace Unity.FPS.AI
             }
 
             Animator.SetTrigger(k_AnimOnDamagedParameter);
+
+            if (SecondAnimator != null)
+            {
+                SecondAnimator.SetTrigger(k_AnimOnDamagedParameter);
+            }
         }
     }
 }
