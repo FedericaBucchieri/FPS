@@ -27,6 +27,13 @@ namespace Unity.FPS.Game
         [Header("Lose")] [Tooltip("This string has to be the name of the scene you want to load when losing")]
         public string LoseSceneName = "LoseScene";
 
+        [Header("Next Level")]
+        [Tooltip("This string has to be the name of the level you want to play after this scene - option 1")]
+        public string NextSceneNameOne = "";
+
+        [Tooltip("This string has to be the name of the level you want to play after this scene - option 2")]
+        public string NextSceneNameTwo = "";
+
 
         public bool GameIsEnding { get; private set; }
 
@@ -42,6 +49,9 @@ namespace Unity.FPS.Game
         void Start()
         {
             AudioUtility.SetMasterVolume(1);
+
+            // Set Next Scene in Scene Flow Manager
+            SceneFlowManager.NextScene = RandomizeScene();
         }
 
         void Update()
@@ -56,9 +66,32 @@ namespace Unity.FPS.Game
                 // See if it's time to load the end scene (after the delay)
                 if (Time.time >= m_TimeLoadEndGameScene)
                 {
-                    SceneManager.LoadScene(m_SceneToLoad);
+                    if(SceneFlowManager.LevelPlayed == SceneFlowManager.LevelToPlay)
+                        SceneManager.LoadScene("EndGameScene");
+                    else 
+                        SceneManager.LoadScene(m_SceneToLoad);
+
                     GameIsEnding = false;
                 }
+            }
+        }
+
+        // @ Fede - This method randomly selects the next scene to be player among the two passed as parameters
+        string RandomizeScene()
+        {
+            int random = 1;
+
+            if (NextSceneNameTwo != null)
+                random = Random.Range(1, 3);
+
+            switch (random)
+            {
+                case 1:
+                    return NextSceneNameOne;
+                case 2:
+                    return NextSceneNameTwo;
+                default:
+                    return NextSceneNameOne;
             }
         }
 
@@ -76,6 +109,7 @@ namespace Unity.FPS.Game
             EndGameFadeCanvasGroup.gameObject.SetActive(true);
             if (win)
             {
+                SceneFlowManager.LevelPlayed++;
                 m_SceneToLoad = WinSceneName;
                 m_TimeLoadEndGameScene = Time.time + EndSceneLoadDelay + DelayBeforeFadeToBlack;
 
@@ -101,6 +135,10 @@ namespace Unity.FPS.Game
             }
             else
             {
+                // @ Fede - add current scene as Next scene to be played
+                SceneFlowManager.NextScene = SceneManager.GetActiveScene().name;
+
+
                 m_SceneToLoad = LoseSceneName;
                 m_TimeLoadEndGameScene = Time.time + EndSceneLoadDelay;
             }

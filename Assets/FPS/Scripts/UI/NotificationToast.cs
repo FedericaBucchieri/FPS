@@ -58,5 +58,6 @@ namespace Unity.FPS.UI
                 }
             }
         }
+
     }
 }

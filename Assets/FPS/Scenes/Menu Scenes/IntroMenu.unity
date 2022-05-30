@@ -419,7 +419,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 129299359}
-        m_TargetAssemblyTypeName: Unity.FPS.UI.LoadSceneButton, fps.UI
+        m_TargetAssemblyTypeName: Unity.FPS.UI.StartButton, fps.UI
         m_MethodName: LoadTargetScene
         m_Mode: 1
         m_Arguments:
@@ -477,10 +477,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 129299354}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9d73053268a2ae48bb9e7d4bf6419fb, type: 3}
+  m_Script: {fileID: 11500000, guid: d00865175781e49179bd3172c95f348b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneName: Level 1
+  SceneName: Health - Around
 --- !u!1 &160263376
 GameObject:
   m_ObjectHideFlags: 0

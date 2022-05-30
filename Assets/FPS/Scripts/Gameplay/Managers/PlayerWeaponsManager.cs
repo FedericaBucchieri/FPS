@@ -196,12 +196,15 @@ namespace Unity.FPS.Gameplay
                         // @Fede Handling Health Kill Range
                         float max = hit.collider.GetComponentInParent<Health>().HealthKillRangeMax;
                         float min = hit.collider.GetComponentInParent<Health>().HealthKillRangeMin;
-                        m_healthKillRangeUI.showKillRange(min, max);
+
+                        if(m_healthKillRangeUI != null)
+                            m_healthKillRangeUI.showKillRange(min, max);
 
                     }
                     else
                     {
-                        m_healthKillRangeUI.hideKillRange();
+                        if (m_healthKillRangeUI != null)
+                            m_healthKillRangeUI.hideKillRange();
                     }
                 }
             }
