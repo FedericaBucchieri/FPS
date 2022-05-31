@@ -13,9 +13,6 @@ namespace Unity.FPS.Gameplay
         [Tooltip("Max number of pickup actions allowed")]
         public int maxPickup;
 
-        [Tooltip("the player GameObject")]
-        public GameObject player;
-
         [Tooltip("The transform for the resources allocation positions")]
         public Transform[] resourcePositions;
 
@@ -28,8 +25,8 @@ namespace Unity.FPS.Gameplay
         [Tooltip("The text element for gear counter")]
         public Text gearCounter;
 
-        [Tooltip("The text element for power counter")]
-        public Text powerCounter;
+        [Tooltip("The text element for battery counter")]
+        public Text batteryCounter;
 
         [Tooltip("The text element for pickup counter")]
         public Text pickupCounter;
@@ -48,7 +45,7 @@ namespace Unity.FPS.Gameplay
 
         private int countGear;
         private int countBolt;
-        private int countPower;
+        private int countBattery;
 
         private int pickedBolt = 0;
         private int pickedGear = 0;
@@ -65,7 +62,7 @@ namespace Unity.FPS.Gameplay
             createPickupList();
             displayResources();
 
-            pickupCounter.text = "Pickups:" + maxPickup.ToString();
+            pickupCounter.text = maxPickup.ToString();
         }
 
 
@@ -142,13 +139,13 @@ namespace Unity.FPS.Gameplay
                 }
                 else if ((int)resource == (int)ResourcePickup.Type.Power)
                 {
-                    countPower++;
+                    countBattery++;
                 }
             }
 
             boltCounter.text = "0/" + countBolt;
             gearCounter.text = "0/" + countGear;
-            powerCounter.text = "0/" + countPower;
+            batteryCounter.text = "0/" + countBattery;
         }
 
         void OnPickupEvent(PickupResourceEvent evt)
@@ -166,14 +163,15 @@ namespace Unity.FPS.Gameplay
                 // update counters
                 boltCounter.text = pickedBolt + "/" + countBolt;
                 gearCounter.text = pickedGear + "/" + countGear;
-                powerCounter.text = pickedPower + "/" + countPower;
+                batteryCounter.text = pickedPower + "/" + countBattery;
 
                 pickupCommand.SetActive(false);
                 Destroy(evt.Pickup);
                 currentPickup++;
-                pickupCounter.text = "Pickups:" + (maxPickup-currentPickup).ToString();
+                pickupCounter.text = (maxPickup-currentPickup).ToString();
 
             // Check if there are still available pickup actions
+            /* Done by trigger in the engine
             if (currentPickup == maxPickup)
                 {
                     if (allPickedUp())
@@ -190,17 +188,11 @@ namespace Unity.FPS.Gameplay
                     }
                     
                 }
+            */
  
 
         }
 
-        /*
-        bool allPickedUp()
-        {
-            // TO BE FIXED
-            return toPickup.Intersect(pickedUp).Any();
-        }
-        */
 
         void updatePickUpCounting(ResourcePickup.Type picked)
         {
@@ -216,14 +208,14 @@ namespace Unity.FPS.Gameplay
             {
                 pickedPower++;
             }
-        }
+        }       
 
-        bool allPickedUp()
+        public bool allPickedUp()
         {
 
-            Debug.Log(pickedBolt + " = " + countBolt + "  " + pickedGear + " = " + countGear + "  " + pickedPower + " = " + countPower);
+            Debug.Log(pickedBolt + " = " + countBolt + "  " + pickedGear + " = " + countGear + "  " + pickedPower + " = " + countBattery);
 
-            return pickedBolt == countBolt && pickedGear == countGear && pickedPower == countPower;
+            return pickedBolt == countBolt && pickedGear == countGear && pickedPower == countBattery;
         }
 
         void OnDestroy()

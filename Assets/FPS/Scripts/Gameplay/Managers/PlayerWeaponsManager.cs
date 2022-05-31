@@ -529,6 +529,22 @@ namespace Unity.FPS.Gameplay
             return false;
         }
 
+
+        public void RemoveAllWeapons()
+        {
+            // Look through our slots for that weapon
+            for (int i = 0; i < m_WeaponSlots.Length; i++)
+            {
+                //Destroy(m_WeaponSlots[i].gameObject);
+                m_WeaponSlots[i] = null;
+
+                if (i == ActiveWeaponIndex)
+                {
+                    SwitchWeapon(true);
+                }
+            }
+        }
+
         public WeaponController GetActiveWeapon()
         {
             return GetWeaponAtSlotIndex(ActiveWeaponIndex);

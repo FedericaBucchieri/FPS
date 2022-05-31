@@ -4,11 +4,14 @@ using Unity.FPS.Game;
 using Unity.FPS.Gameplay;
 using Unity.FPS.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TutorialManager : MonoBehaviour
 {
     [Tooltip("Set of instruction messages to display as popUps")]
     public GameObject[] popUps;
+    [Tooltip("Final popUp Message")]
+    public GameObject end_popUp;
     [Tooltip("UI rectangle where to display the messages")]
     public UITable DisplayMessageRect;
     [Tooltip("Player Object")]
@@ -20,6 +23,7 @@ public class TutorialManager : MonoBehaviour
     PlayerCharacterController m_CharacterController;
     PlayerWeaponsManager m_WeaponManager;
     private TutorialNotification currentPopUp;
+
 
     private void Start()
     {
@@ -65,14 +69,35 @@ public class TutorialManager : MonoBehaviour
                     currentPopUp.endTrigger = true;
                 break;
             case 6: // Change Weapon tutorial
-                if (m_InputHandler.GetSwitchWeaponInput() == 0)
+                if (m_InputHandler.GetSwitchWeaponInput() != 0) // To fix
                     currentPopUp.endTrigger = true;
                 break;
             case 7: // Aim tutorial
                 if (m_InputHandler.GetAimInputHeld())
+                {
                     currentPopUp.endTrigger = true;
+                    // ending Tutorial
+                    endTutorial();
+                }
                 break;
         }
+    }
+
+    void endTutorial()
+    {
+        TutorialNotification end_popUp_notification = end_popUp.GetComponent<TutorialNotification>();
+        end_popUp_notification.Initialized = true;
+        DisplayMessageRect.UpdateTable(end_popUp_notification.gameObject);
+
+        StartCoroutine(PrepareSceneChange());
+    }
+
+    IEnumerator PrepareSceneChange()
+    {
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(5);
+
+        SceneManager.LoadScene("IntroMenu");
     }
 
     public void nextTutorialRule()

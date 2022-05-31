@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/FPS/Scenes/Menu Scenes/EndGameScene.unity
     guid: ee3a5cab94e624fa59714174a9dbb317
+  - enabled: 1
+    path: Assets/FPS/Scenes/Tutorial.unity
+    guid: b0f447c7708a34d689f903b5925c5689
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
