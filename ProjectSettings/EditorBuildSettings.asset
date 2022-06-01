@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/FPS/Scenes/Menu Scenes/IntroMenu.unity
     guid: 56e3faabc5bb30f49a68bb8f1292f988
   - enabled: 1
+    path: Assets/FPS/Scenes/Menu Scenes/IntroHealthLevels.unity
+    guid: 671768675d1444f7d8ad01d9b3723a5d
+  - enabled: 1
+    path: Assets/FPS/Scenes/Menu Scenes/IntroResourcesLevels.unity
+    guid: d34d683c470b040b283b0bb35683bf1f
+  - enabled: 1
     path: Assets/FPS/Scenes/Menu Scenes/WinScene.unity
     guid: 037d06fbede2b4041a843d9ee6fe750c
   - enabled: 1
@@ -29,7 +35,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/FPS/Scenes/Tutorial.unity
     guid: b0f447c7708a34d689f903b5925c5689
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/FPS/Scenes/Resource Visualization/Resource - Shape.unity
+    guid: a5b2a7cb247fb40c19c50dc5501a9e6a
+  - enabled: 1
+    path: Assets/FPS/Scenes/Resource Visualization/Resource - Color.unity
+    guid: 3a7e89ceeec8c4f0ead5eec744aaf1a5
+  - enabled: 1
+    path: Assets/FPS/Scenes/Resource Visualization/Resource - Text.unity
+    guid: 8564bb6dee0954965862aa954782d3f0
   m_configObjects: {}

@@ -13,6 +13,9 @@ namespace Unity.FPS.Gameplay
         [Tooltip("Max number of pickup actions allowed")]
         public int maxPickup;
 
+        [Tooltip("Image for the pickup actions")]
+        public Image pickupImage;
+
         [Tooltip("The transform for the resources allocation positions")]
         public Transform[] resourcePositions;
 
@@ -22,14 +25,30 @@ namespace Unity.FPS.Gameplay
         [Tooltip("The text element for bolt counter")]
         public Text boltCounter;
 
+        [Tooltip("Image for the bolt counter")]
+        public Image boltImage;
+
         [Tooltip("The text element for gear counter")]
         public Text gearCounter;
+
+        [Tooltip("Image for the gear counter")]
+        public Image gearImage;
 
         [Tooltip("The text element for battery counter")]
         public Text batteryCounter;
 
+        [Tooltip("Image for the battery counter")]
+        public Image batteryImage;
+
         [Tooltip("The text element for pickup counter")]
         public Text pickupCounter;
+
+        [Tooltip("Audio source ")]
+        public AudioSource AudioSource;
+
+        [Tooltip("Sound played when there are not more pickupActions available")]
+        public AudioClip noMorePickupSound;
+
 
         public GameObject bolt;
         public GameObject gear;
@@ -49,8 +68,9 @@ namespace Unity.FPS.Gameplay
 
         private int pickedBolt = 0;
         private int pickedGear = 0;
-        private int pickedPower = 0;
+        private int pickedBattery = 0;
 
+        bool reachedMaxPickup = false;
 
 
         protected override void Start()
@@ -127,7 +147,6 @@ namespace Unity.FPS.Gameplay
             {
                 ResourcePickup.Type resource = (ResourcePickup.Type)Random.Range(0, 3);
                 toPickup.Add(resource);
-                Debug.Log("To Pickup: " + resource);
 
                 if ((int)resource == (int)ResourcePickup.Type.Bolt)
                 {
@@ -150,12 +169,19 @@ namespace Unity.FPS.Gameplay
 
         void OnPickupEvent(PickupResourceEvent evt)
         { 
-                if (IsCompleted)
-                    return;
+                
+            if (IsCompleted)
+                return;
 
+            // if there are no more pickup actions available
+            if (reachedMaxPickup)
+            {
+                AudioSource.PlayOneShot(noMorePickupSound, 1F);
+            }
+            else
+            {
                 // handle pickup
-                ResourcePickup picked = (ResourcePickup) evt.Pickup.GetComponent<ResourcePickup>();
-                Debug.Log("Picked up a " + picked.type);
+                ResourcePickup picked = (ResourcePickup)evt.Pickup.GetComponent<ResourcePickup>();
 
                 pickedUp.Add(picked.type);
                 updatePickUpCounting(picked.type);
@@ -163,34 +189,19 @@ namespace Unity.FPS.Gameplay
                 // update counters
                 boltCounter.text = pickedBolt + "/" + countBolt;
                 gearCounter.text = pickedGear + "/" + countGear;
-                batteryCounter.text = pickedPower + "/" + countBattery;
+                batteryCounter.text = pickedBattery + "/" + countBattery;
 
                 pickupCommand.SetActive(false);
                 Destroy(evt.Pickup);
                 currentPickup++;
-                pickupCounter.text = (maxPickup-currentPickup).ToString();
+                pickupCounter.text = (maxPickup - currentPickup).ToString();
 
-            // Check if there are still available pickup actions
-            /* Done by trigger in the engine
-            if (currentPickup == maxPickup)
+                if (currentPickup == maxPickup)
                 {
-                    if (allPickedUp())
-                    {
-                        Debug.Log("completed");
-                        CompleteObjective(string.Empty, string.Empty, "Objective complete : " + Title);
-
-                    }
-                    else
-                    { // objective failed, kill the player
-                        Health health = player.GetComponent<Health>();
-                        health.CurrentHealth = 0;
-                        health.HandleDeath(); 
-                    }
-                    
+                    reachedMaxPickup = true;
+                    pickupImage.color = Color.red;
                 }
-            */
- 
-
+            }
         }
 
 
@@ -199,23 +210,26 @@ namespace Unity.FPS.Gameplay
             if ((int)picked == (int)ResourcePickup.Type.Bolt)
             {
                 pickedBolt++;
+                if (pickedBolt == countBolt)
+                    boltImage.color = Color.green;
             }
             else if ((int)picked == (int)ResourcePickup.Type.Gear)
             {
                 pickedGear++;
+                if (pickedGear == countGear)
+                    gearImage.color = Color.green;
             }
             else if ((int)picked == (int)ResourcePickup.Type.Power)
             {
-                pickedPower++;
+                pickedBattery++;
+                if (pickedBattery == countBattery)
+                    batteryImage.color = Color.green;
             }
         }       
 
         public bool allPickedUp()
         {
-
-            Debug.Log(pickedBolt + " = " + countBolt + "  " + pickedGear + " = " + countGear + "  " + pickedPower + " = " + countBattery);
-
-            return pickedBolt == countBolt && pickedGear == countGear && pickedPower == countBattery;
+            return pickedBolt >= countBolt && pickedGear >= countGear && pickedBattery >= countBattery;
         }
 
         void OnDestroy()

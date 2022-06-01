@@ -12,33 +12,41 @@ namespace Unity.FPS.Gameplay
         [Tooltip("UI element for the drop command")]
         public GameObject dropResourcesCommand;
 
+        PlayerCharacterController pickingPlayer;
 
         private void Start()
         {
             dropResourcesCommand.SetActive(false);
+            EventManager.AddListener<DropResourceEvent>(OnDropEvent);
         }
 
         private void OnTriggerStay(Collider other)
         {
-            PlayerCharacterController pickingPlayer = other.GetComponent<PlayerCharacterController>();
+            pickingPlayer = other.GetComponent<PlayerCharacterController>();
 
             if (pickingPlayer != null)
             {
                 dropResourcesCommand.SetActive(true);
+            }
+        }
 
-                if (Input.GetKeyDown(KeyCode.X))
-                {
-                    if (objective.allPickedUp())
-                    {
-                        objective.CompleteObjective(string.Empty, string.Empty, "Objective complete : " + objective.Title);
-                    }
-                    else
-                    {
-                        Health health = pickingPlayer.GetComponent<Health>();
-                        health.CurrentHealth = 0;
-                        health.HandleDeath();
-                    }
-                }
+        private void OnTriggerExit(Collider other)
+        {
+            dropResourcesCommand.SetActive(false);
+            pickingPlayer = null;
+        }
+
+        void OnDropEvent(DropResourceEvent evt)
+        {
+            if (objective.allPickedUp())
+            {
+                objective.CompleteObjective(string.Empty, string.Empty, "Objective complete : " + objective.Title);
+            }
+            else
+            {
+                Health health = pickingPlayer.GetComponent<Health>();
+                health.CurrentHealth = 0;
+                health.HandleDeath();
             }
         }
     }

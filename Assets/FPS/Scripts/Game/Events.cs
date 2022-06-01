@@ -14,6 +14,7 @@ namespace Unity.FPS.Game
         public static EnemyKillEvent EnemyKillEvent = new EnemyKillEvent();
         public static PickupEvent PickupEvent = new PickupEvent();
         public static PickupResourceEvent PickupResourceEvent = new PickupResourceEvent();
+        public static DropResourceEvent DropResourceEvent = new DropResourceEvent();
         public static AmmoPickupEvent AmmoPickupEvent = new AmmoPickupEvent();
         public static DamageEvent DamageEvent = new DamageEvent();
         public static DisplayMessageEvent DisplayMessageEvent = new DisplayMessageEvent();
@@ -52,6 +53,8 @@ namespace Unity.FPS.Game
     {
         public GameObject Pickup;
     }
+
+    public class DropResourceEvent : GameEvent{}
 
     public class AmmoPickupEvent : GameEvent
     {

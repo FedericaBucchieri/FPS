@@ -29,10 +29,13 @@ namespace Unity.FPS.Game
 
         [Header("Next Level")]
         [Tooltip("This string has to be the name of the level you want to play after this scene - option 1")]
-        public string NextSceneNameOne = "";
+        public string NextSceneNameOne;
 
         [Tooltip("This string has to be the name of the level you want to play after this scene - option 2")]
-        public string NextSceneNameTwo = "";
+        public string NextSceneNameTwo;
+
+        [Tooltip("If there are two possible next scenes or not")]
+        public bool randomizeNextScene = false;
 
 
         public bool GameIsEnding { get; private set; }
@@ -52,6 +55,7 @@ namespace Unity.FPS.Game
 
             // Set Next Scene in Scene Flow Manager
             SceneFlowManager.NextScene = RandomizeScene();
+            m_SceneToLoad = SceneFlowManager.NextScene;
         }
 
         void Update()
@@ -81,9 +85,10 @@ namespace Unity.FPS.Game
         {
             int random = 1;
 
-            if (NextSceneNameTwo != null)
+            if (randomizeNextScene)
                 random = Random.Range(1, 3);
 
+            Debug.Log(random);
             switch (random)
             {
                 case 1:
@@ -110,6 +115,7 @@ namespace Unity.FPS.Game
             if (win)
             {
                 SceneFlowManager.LevelPlayed++;
+
                 m_SceneToLoad = WinSceneName;
                 m_TimeLoadEndGameScene = Time.time + EndSceneLoadDelay + DelayBeforeFadeToBlack;
 

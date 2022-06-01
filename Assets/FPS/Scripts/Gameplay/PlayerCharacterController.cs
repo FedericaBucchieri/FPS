@@ -77,6 +77,7 @@ namespace Unity.FPS.Gameplay
         [Tooltip("Sound played when jumping")] public AudioClip JumpSfx;
         [Tooltip("Sound played when landing")] public AudioClip LandSfx;
 
+
         [Tooltip("Sound played when taking damage froma fall")]
         public AudioClip FallDamageSfx;
 
@@ -103,6 +104,10 @@ namespace Unity.FPS.Gameplay
         public bool HasJumpedThisFrame { get; private set; }
         public bool IsDead { get; private set; }
         public bool IsCrouching { get; private set; }
+        public bool canPickup { get; set; }
+        public bool canDropDown { get; set; }
+
+        GameObject pickableResource;
 
         public float RotationMultiplier
         {
@@ -214,6 +219,9 @@ namespace Unity.FPS.Gameplay
             UpdateCharacterHeight(false);
 
             HandleCharacterMovement();
+
+            HandlePickup();
+            HandleDropDown();
         }
 
         void OnDie()
@@ -385,6 +393,91 @@ namespace Unity.FPS.Gameplay
                 CharacterVelocity = Vector3.ProjectOnPlane(CharacterVelocity, hit.normal);
             }
         }
+
+        void HandlePickup()
+        {
+            if (canPickup && m_InputHandler.GetPickupInputDown())
+            {
+                // broadcast event
+                PickupResourceEvent evt = Events.PickupResourceEvent;
+                evt.Pickup = pickableResource;
+                EventManager.Broadcast(evt);
+                canPickup = false;
+                pickableResource = null;
+            }
+        }
+
+        void HandleDropDown()
+        {
+            if (canDropDown && m_InputHandler.GetPickupInputDown())
+            {
+                // broadcast event
+                DropResourceEvent evt = Events.DropResourceEvent;
+                EventManager.Broadcast(evt);
+                canDropDown = false;
+            }
+        }
+
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.GetComponent<ResourcePickup>() != null)
+            {
+                canPickup = true;
+                pickableResource = other.gameObject;
+            }
+
+            if (other.GetComponent<DropResourcePoint>() != null)
+            {
+                canDropDown = true;
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.GetComponent<ResourcePickup>() != null)
+            {
+                canPickup = false;
+                pickableResource = null;
+            }
+
+            if (other.GetComponent<DropResourcePoint>() != null)
+            {
+                canDropDown = false;
+            }
+        }
+
+        /*
+        private void OnTriggerStay(Collider other)
+        {
+            // if the player is collidying with a resource to pickup 
+            if(other.GetComponent<ResourcePickup>() != null)
+            {
+                // Pickup command pressed
+                if (m_InputHandler.GetPickupInputDown())
+                {
+                    // broadcast event
+                    PickupResourceEvent evt = Events.PickupResourceEvent;
+                    evt.Pickup = other.gameObject;
+                    EventManager.Broadcast(evt);
+                }
+            }
+
+            // if the player is collidying with a drop down resource point
+            if(other.GetComponent<DropResourcePoint>() != null)
+            {
+                // Pickup command pressed - same for DropDown
+                if (m_InputHandler.GetPickupInputDown())
+                {
+                    // broadcast event
+                    DropResourceEvent evt = Events.DropResourceEvent;
+                    EventManager.Broadcast(evt);
+                }
+            }
+
+        }
+        */
+
 
         // Returns true if the slope angle represented by the given normal is under the slope angle limit of the character controller
         bool IsNormalUnderSlopeLimit(Vector3 normal)

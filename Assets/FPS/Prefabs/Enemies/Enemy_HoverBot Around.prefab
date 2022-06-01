@@ -197,12 +197,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 100
-  CurrentHealth: 10
+  CurrentHealth: 100
   CriticalHealthRatio: 0.3
   hasRandomHealthKillRange: 0
   HealthKillRangeMin: 0.3
   HealthKillRangeMax: 0.6
-  m_isRandom: 1
+  m_isRandom: 0
 --- !u!114 &3464315327790461765
 MonoBehaviour:
   m_ObjectHideFlags: 0

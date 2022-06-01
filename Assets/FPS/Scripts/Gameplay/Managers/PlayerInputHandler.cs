@@ -168,6 +168,26 @@ namespace Unity.FPS.Gameplay
             return false;
         }
 
+        public bool GetPickupInputDown()
+        {
+            if (CanProcessInput())
+            {
+                return Input.GetButtonDown(GameConstants.k_ButtonNamePickup);
+            }
+
+            return false;
+        }
+
+        public bool GetPickupInputReleased()
+        {
+            if (CanProcessInput())
+            {
+                return Input.GetButtonUp(GameConstants.k_ButtonNamePickup);
+            }
+
+            return false;
+        }
+
         public bool GetReloadButtonDown()
         {
             if (CanProcessInput())

@@ -34,7 +34,6 @@ namespace Unity.FPS.Gameplay
 
         protected override void OnPicked(PlayerCharacterController byPlayer)
         {
-
             PlayPickupFeedback();
         }
 
@@ -45,13 +44,6 @@ namespace Unity.FPS.Gameplay
             if (pickingPlayer != null)
             {
                 pickupCommand.SetActive(true);
-
-                if (Input.GetKeyDown(KeyCode.X))
-                {
-                    PickupResourceEvent evt = Events.PickupResourceEvent;
-                    evt.Pickup = gameObject;
-                    EventManager.Broadcast(evt);
-                }
             }
 
         }
