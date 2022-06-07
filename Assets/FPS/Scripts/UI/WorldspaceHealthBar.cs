@@ -16,7 +16,10 @@ namespace Unity.FPS.UI
 
         [Tooltip("Whether the health bar is visible when at full health or not")]
         public bool HideFullHealthBar = true;
-
+        private void Start()
+        {
+            HealthBarImage.color = Color.red;
+        }
 
 
         void Update()
@@ -25,6 +28,7 @@ namespace Unity.FPS.UI
             float healthPercentage = Health.CurrentHealth / Health.MaxHealth;
             HealthBarImage.fillAmount = healthPercentage;
 
+            /* Color encoding implementation
             if (healthPercentage < 0.3)
             {
                 HealthBarImage.color = Color.red;
@@ -37,9 +41,10 @@ namespace Unity.FPS.UI
             {
                 HealthBarImage.color = Color.green;
             }
+            */
 
             // rotate health bar to face the camera/player
-            HealthBarPivot.LookAt(Camera.main.transform.position);
+                HealthBarPivot.LookAt(Camera.main.transform.position);
 
             // hide health bar if needed
             if (HideFullHealthBar)

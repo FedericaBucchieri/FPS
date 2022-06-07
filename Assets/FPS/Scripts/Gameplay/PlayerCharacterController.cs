@@ -412,9 +412,9 @@ namespace Unity.FPS.Gameplay
             if (canDropDown && m_InputHandler.GetPickupInputDown())
             {
                 // broadcast event
+                canDropDown = false;
                 DropResourceEvent evt = Events.DropResourceEvent;
                 EventManager.Broadcast(evt);
-                canDropDown = false;
             }
         }
 

@@ -154,6 +154,7 @@ MonoBehaviour:
   PathReachingRangeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   AttackRangeColor: {r: 1, g: 0, b: 0, a: 1}
   DetectionRangeColor: {r: 0, g: 0, b: 1, a: 1}
+  attacksOnlyOnDamage: 1
 --- !u!114 &4752156053906186385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,6 +170,10 @@ MonoBehaviour:
   Animator: {fileID: 320366457759794871}
   SecondAnimator: {fileID: 0}
   AttackStopDistanceRatio: 0.08
+  allowFreeNavigation: 1
+  navigationRadius: 5
+  sensibilityOfDistance: 0.5
+  totalNavigationTime: 3
   RandomHitSparks:
   - {fileID: 9125706537325074547}
   - {fileID: 8158939429672774431}
@@ -179,7 +184,7 @@ MonoBehaviour:
   - {fileID: 1407167163009738010}
   - {fileID: 8934028655093144013}
   OnDetectSfx: {fileID: 8300000, guid: 25722734eeccba042a18e26e376ca542, type: 3}
-  MovementSound: {fileID: 0}
+  MovementSound: {fileID: 8300000, guid: 44c5f76f80602024e82d3e5f3af4ee97, type: 3}
   PitchDistortionMovementSpeed:
     Min: 1
     Max: 1.5
@@ -196,8 +201,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 100
+  CurrentHealth: 10
   CriticalHealthRatio: 0.3
-  m_isRandom: 1
 --- !u!195 &7406548990343174644
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -429,6 +434,7 @@ MonoBehaviour:
   AttackRange: 10
   KnownTargetTimeout: 12
   Animator: {fileID: 0}
+  m_ActorsManager: {fileID: 0}
 --- !u!1 &6421371450313891992
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ namespace Unity.FPS.AI
             Patrol,
             Follow,
             Attack,
+            Navigating,
         }
 
         public Animator Animator;
@@ -19,6 +20,19 @@ namespace Unity.FPS.AI
         [Tooltip("Fraction of the enemy's attack range at which it will stop moving towards target while attacking")]
         [Range(0f, 1f)]
         public float AttackStopDistanceRatio = 0.5f;
+
+        public bool allowFreeNavigation = false;
+
+        [Tooltip("Radius of free navigation at each step when in idle")]
+        [Range(0f, 10f)]
+        public float navigationRadius = 5f;
+        [Tooltip("Fraction of the navigation range at which the enemy will change destination point")]
+        [Range(0f, 1f)]
+        public float sensibilityOfDistance = 0.5f;
+
+        float navigationTime = 0f;
+        [SerializeField]
+        float totalNavigationTime = 3f;
 
         [Tooltip("The random hit damage effects")]
         public ParticleSystem[] RandomHitSparks;
@@ -50,7 +64,6 @@ namespace Unity.FPS.AI
             m_EnemyController.SetPathDestinationToClosestNode();
             m_EnemyController.onDamaged += OnDamaged;
 
-            // Start patrolling
             AiState = AIState.Patrol;
 
             // adding a audio source to play the movement sound on it
@@ -58,6 +71,10 @@ namespace Unity.FPS.AI
             DebugUtility.HandleErrorIfNullGetComponent<AudioSource, EnemyMobile>(m_AudioSource, this, gameObject);
             m_AudioSource.clip = MovementSound;
             m_AudioSource.Play();
+
+            totalNavigationTime = Random.Range(2f, 5f);
+
+
         }
 
         void Update()
@@ -112,7 +129,20 @@ namespace Unity.FPS.AI
             {
                 case AIState.Patrol:
                     m_EnemyController.UpdatePathDestination();
-                    m_EnemyController.SetNavDestination(m_EnemyController.GetDestinationOnPath());
+
+                    // Free navigation robot
+                    if(allowFreeNavigation)
+                    {
+                        navigationTime += Time.deltaTime;
+
+                        if(navigationTime >= totalNavigationTime)
+                        {
+                            navigationTime = 0f;
+                            m_EnemyController.SetNavDestination(m_EnemyController.RandomNavDestination(navigationRadius));
+                        }
+                    }
+                    else 
+                        m_EnemyController.SetNavDestination(m_EnemyController.GetDestinationOnPath());
                     break;
                 case AIState.Follow:
                     m_EnemyController.SetNavDestination(m_EnemyController.KnownDetectedTarget.transform.position);

@@ -8,6 +8,9 @@ namespace Unity.FPS.Gameplay
         [Tooltip("Sensitivity multiplier for moving the camera around")]
         public float LookSensitivity = 1f;
 
+        [Tooltip("playing on WebGL")]
+        public bool isWebGL = false;
+
         [Tooltip("Additional sensitivity multiplier for WebGL")]
         public float WebglLookSensitivityMultiplier = 0.25f;
 
@@ -275,8 +278,11 @@ namespace Unity.FPS.Gameplay
                     // reduce mouse input amount to be equivalent to stick movement
                     i *= 0.01f;
 #if UNITY_WEBGL
-                    // Mouse tends to be even more sensitive in WebGL due to mouse acceleration, so reduce it even more
-                    i *= WebglLookSensitivityMultiplier;
+                    if(isWebGL)
+                    {
+                        // Mouse tends to be even more sensitive in WebGL due to mouse acceleration, so reduce it even more
+                        i *= WebglLookSensitivityMultiplier;
+                    }
 #endif
                 }
 

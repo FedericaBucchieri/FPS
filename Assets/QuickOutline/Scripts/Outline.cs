@@ -135,6 +135,7 @@ public class Outline : MonoBehaviour {
 
   void Update() {
 
+        /*
         if (isHealth){
             // update health bar value
             float healthPercentage = Health.CurrentHealth / Health.MaxHealth;
@@ -155,6 +156,7 @@ public class Outline : MonoBehaviour {
                 needsUpdate = true;
             }
         }
+        */
 
         if (needsUpdate)
         {

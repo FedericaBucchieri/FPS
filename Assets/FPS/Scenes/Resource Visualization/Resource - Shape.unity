@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 3241ea8c1920645a98a4d8b757206502, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: abbdd4aa6ee244785ba2f79b3d4b12ed, type: 2}
 --- !u!1 &2050351
 GameObject:
   m_ObjectHideFlags: 0
@@ -8663,6 +8663,42 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 325030785}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &325691874
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 325691875}
+  m_Layer: 5
+  m_Name: DropDownErrorMessage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &325691875
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325691874}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1781216190}
+  m_Father: {fileID: 1481738285}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &328617236
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12616,12 +12652,12 @@ PrefabInstance:
     - target: {fileID: 1315839542190839936, guid: c996b53e9f849234393d1e90f68d1679,
         type: 3}
       propertyPath: NextSceneNameOne
-      value: Resource - Color
+      value: Resource - ColorClone
       objectReference: {fileID: 0}
     - target: {fileID: 1315839542190839936, guid: c996b53e9f849234393d1e90f68d1679,
         type: 3}
       propertyPath: NextSceneNameTwo
-      value: Resource - Text
+      value: Resource - TextClone
       objectReference: {fileID: 0}
     - target: {fileID: 1315839542190839936, guid: c996b53e9f849234393d1e90f68d1679,
         type: 3}
@@ -35614,6 +35650,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objective: {fileID: 1067531878}
   dropResourcesCommand: {fileID: 2077291759}
+  dropErrorMessage: {fileID: 325691874}
 --- !u!65 &1381212284
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -46776,6 +46813,85 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1780923018}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1781216189
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1781216190}
+  - component: {fileID: 1781216192}
+  - component: {fileID: 1781216191}
+  m_Layer: 5
+  m_Name: DropText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1781216190
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781216189}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 325691875}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -199}
+  m_SizeDelta: {x: 160, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1781216191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781216189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 43631e0e91b686e4fbffb897db7ca8f5, type: 3}
+    m_FontSize: 12
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: You can only drop down the resources when you have ALL of them
+--- !u!222 &1781216192
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781216189}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1786426576
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47649,7 +47765,7 @@ PrefabInstance:
     - target: {fileID: 8746678193447392789, guid: 761cdc9e4e883334cbdcea062d0befa7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.4033947
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8746678193447392789, guid: 761cdc9e4e883334cbdcea062d0befa7,
         type: 3}
@@ -56537,6 +56653,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6587036432739219875, guid: 4f3894eec95bf408789ad75eb60ea6d4,
         type: 3}
+      propertyPath: Title
+      value: Pickup resources to fix the engine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6587036432739219875, guid: 4f3894eec95bf408789ad75eb60ea6d4,
+        type: 3}
       propertyPath: power
       value: 
       objectReference: {fileID: 1000011940937682, guid: 4c2d50910571f4204b3d65cad8346486,
@@ -56556,6 +56677,11 @@ PrefabInstance:
       propertyPath: gearImage
       value: 
       objectReference: {fileID: 777450420}
+    - target: {fileID: 6587036432739219875, guid: 4f3894eec95bf408789ad75eb60ea6d4,
+        type: 3}
+      propertyPath: maxPickup
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6587036432739219875, guid: 4f3894eec95bf408789ad75eb60ea6d4,
         type: 3}
       propertyPath: AudioSource

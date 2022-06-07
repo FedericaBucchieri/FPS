@@ -194,17 +194,22 @@ namespace Unity.FPS.Gameplay
                         IsPointingAtEnemy = true;
 
                         // @Fede Handling Health Kill Range
+                        /*
                         float max = hit.collider.GetComponentInParent<Health>().HealthKillRangeMax;
                         float min = hit.collider.GetComponentInParent<Health>().HealthKillRangeMin;
 
+
                         if(m_healthKillRangeUI != null)
                             m_healthKillRangeUI.showKillRange(min, max);
+                        */
 
                     }
                     else
                     {
+                        /*
                         if (m_healthKillRangeUI != null)
                             m_healthKillRangeUI.hideKillRange();
+                        */
                     }
                 }
             }

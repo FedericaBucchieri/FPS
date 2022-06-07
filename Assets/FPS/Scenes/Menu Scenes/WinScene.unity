@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 129299356}
   - component: {fileID: 129299359}
   m_Layer: 5
-  m_Name: RestartButton
+  m_Name: NextButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -573,9 +573,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 422480820}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9d73053268a2ae48bb9e7d4bf6419fb, type: 3}
+  m_Script: {fileID: 11500000, guid: d00865175781e49179bd3172c95f348b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SceneName: SpeedMenuHealth
 --- !u!114 &422480823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -621,7 +622,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 422480822}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: Unity.FPS.UI.StartButton, fps.UI
         m_MethodName: LoadTargetScene
         m_Mode: 1
         m_Arguments:

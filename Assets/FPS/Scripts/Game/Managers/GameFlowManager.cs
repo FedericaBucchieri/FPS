@@ -70,6 +70,8 @@ namespace Unity.FPS.Game
                 // See if it's time to load the end scene (after the delay)
                 if (Time.time >= m_TimeLoadEndGameScene)
                 {
+                    Debug.Log("Change Scene" + SceneFlowManager.LevelPlayed + " " + SceneFlowManager.LevelToPlay);
+
                     if(SceneFlowManager.LevelPlayed == SceneFlowManager.LevelToPlay)
                         SceneManager.LoadScene("EndGameScene");
                     else 
@@ -88,7 +90,6 @@ namespace Unity.FPS.Game
             if (randomizeNextScene)
                 random = Random.Range(1, 3);
 
-            Debug.Log(random);
             switch (random)
             {
                 case 1:
@@ -114,7 +115,7 @@ namespace Unity.FPS.Game
             EndGameFadeCanvasGroup.gameObject.SetActive(true);
             if (win)
             {
-                SceneFlowManager.LevelPlayed++;
+                SceneFlowManager.LevelPlayed ++;
 
                 m_SceneToLoad = WinSceneName;
                 m_TimeLoadEndGameScene = Time.time + EndSceneLoadDelay + DelayBeforeFadeToBlack;
@@ -143,7 +144,6 @@ namespace Unity.FPS.Game
             {
                 // @ Fede - add current scene as Next scene to be played
                 SceneFlowManager.NextScene = SceneManager.GetActiveScene().name;
-
 
                 m_SceneToLoad = LoseSceneName;
                 m_TimeLoadEndGameScene = Time.time + EndSceneLoadDelay;

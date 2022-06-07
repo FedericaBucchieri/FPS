@@ -6,12 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/FPS/Scenes/Menu Scenes/SpeedMenuHealth.unity
+    guid: be6316c31a5ee43fbbc42a1addbd4af7
+  - enabled: 0
     path: Assets/FPS/Scenes/Menu Scenes/IntroMenu.unity
     guid: 56e3faabc5bb30f49a68bb8f1292f988
   - enabled: 1
-    path: Assets/FPS/Scenes/Menu Scenes/IntroHealthLevels.unity
-    guid: 671768675d1444f7d8ad01d9b3723a5d
-  - enabled: 1
+    path: Assets/FPS/Scenes/Tutorial.unity
+    guid: b0f447c7708a34d689f903b5925c5689
+  - enabled: 0
     path: Assets/FPS/Scenes/Menu Scenes/IntroResourcesLevels.unity
     guid: d34d683c470b040b283b0bb35683bf1f
   - enabled: 1
@@ -21,27 +24,33 @@ EditorBuildSettings:
     path: Assets/FPS/Scenes/Menu Scenes/LoseScene.unity
     guid: 72e5c65a45893714484002914e3fd521
   - enabled: 1
-    path: Assets/FPS/Scenes/Health Visualization/Health - Around.unity
-    guid: 71240627837414c42a49bfb71589305d
-  - enabled: 1
-    path: Assets/FPS/Scenes/Health Visualization/Health - Integrated.unity
-    guid: 0f42fe8f34f5e421aa40c2945feaf3ed
-  - enabled: 1
-    path: Assets/FPS/Scenes/Health Visualization/Health - Overlap.unity
-    guid: a6f5004961da84ad5bdd710319ba85dd
-  - enabled: 1
     path: Assets/FPS/Scenes/Menu Scenes/EndGameScene.unity
     guid: ee3a5cab94e624fa59714174a9dbb317
-  - enabled: 1
-    path: Assets/FPS/Scenes/Tutorial.unity
-    guid: b0f447c7708a34d689f903b5925c5689
-  - enabled: 1
+  - enabled: 0
     path: Assets/FPS/Scenes/Resource Visualization/Resource - Shape.unity
     guid: a5b2a7cb247fb40c19c50dc5501a9e6a
+  - enabled: 0
+    path: Assets/FPS/Scenes/Resource Visualization/Resource - TextClone.unity
+    guid: 2a57974bfb4114a05be0a1527a28ca90
+  - enabled: 0
+    path: Assets/FPS/Scenes/Resource Visualization/Resource - ColorClone.unity
+    guid: c3e715da2b22f4e98a330f8fdaba9d94
   - enabled: 1
-    path: Assets/FPS/Scenes/Resource Visualization/Resource - Color.unity
-    guid: 3a7e89ceeec8c4f0ead5eec744aaf1a5
+    path: Assets/FPS/Scenes/Health Visualization/Health - Around.unity
+    guid: 0d99ccd54d93140c39e368f691cfc987
   - enabled: 1
-    path: Assets/FPS/Scenes/Resource Visualization/Resource - Text.unity
-    guid: 8564bb6dee0954965862aa954782d3f0
+    path: Assets/FPS/Scenes/Health Visualization/Health - Integrated.unity
+    guid: e33ac1987995f4c389abf6b9447d81d3
+  - enabled: 1
+    path: Assets/FPS/Scenes/Health Visualization/Health - Overlap.unity
+    guid: b74667b5ce3c04d80b3791631ff7448e
+  - enabled: 1
+    path: Assets/FPS/Scenes/Menu Scenes/IntroHealthLevelsAround.unity
+    guid: 4fbaa083633714d798370f4e0b7f37c9
+  - enabled: 1
+    path: Assets/FPS/Scenes/Menu Scenes/IntroHealthLevelsIntegrated.unity
+    guid: 47ff69eb490b74290957240d0fd92b29
+  - enabled: 1
+    path: Assets/FPS/Scenes/Menu Scenes/IntroHealthLevelsOverlap.unity
+    guid: 467203a0aa5ea4ec199f4e9d7c51d7f2
   m_configObjects: {}

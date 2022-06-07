@@ -25,14 +25,14 @@ namespace Unity.FPS.AI
         public UnityAction onDetectedTarget;
         public UnityAction onLostTarget;
 
-        public GameObject KnownDetectedTarget { get; private set; }
-        public bool IsTargetInAttackRange { get; private set; }
-        public bool IsSeeingTarget { get; private set; }
-        public bool HadKnownTarget { get; private set; }
+        public GameObject KnownDetectedTarget { get;  set; }
+        public bool IsTargetInAttackRange { get;  set; }
+        public bool IsSeeingTarget { get;  set; }
+        public bool HadKnownTarget { get;  set; }
 
         protected float TimeLastSeenTarget = Mathf.NegativeInfinity;
 
-        ActorsManager m_ActorsManager;
+        public ActorsManager m_ActorsManager;
 
         const string k_AnimAttackParameter = "Attack";
         const string k_AnimOnDamagedParameter = "OnDamaged";
@@ -57,7 +57,9 @@ namespace Unity.FPS.AI
             float closestSqrDistance = Mathf.Infinity;
             foreach (Actor otherActor in m_ActorsManager.Actors)
             {
-                if (otherActor.Affiliation != actor.Affiliation)
+                //if (otherActor.Affiliation != actor.Affiliation)
+                // changing to player affiliation equals to 2
+                if (otherActor.Affiliation == 2)
                 {
                     float sqrDistance = (otherActor.transform.position - DetectionSourcePoint.position).sqrMagnitude;
                     if (sqrDistance < sqrDetectionRange && sqrDistance < closestSqrDistance)

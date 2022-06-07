@@ -20,7 +20,23 @@ namespace Unity.FPS.Gameplay
 
         public void showKillRange(float min, float max)
         {
-            rangeDisplay.text = max + " - " + min + " %";
+            // Color version
+            switch (min)
+            {
+                case 0:
+                    rangeDisplay.text = "Red";
+                    break;
+                case 30:
+                    rangeDisplay.text = "Yellow";
+                    break;
+                case 70:
+                    rangeDisplay.text = "Green";
+                    break;
+            }
+            
+
+            // numeric version
+            //rangeDisplay.text = max + " - " + min + " %";
             this.gameObject.SetActive(true);
         }
 

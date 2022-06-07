@@ -12,13 +12,6 @@ namespace Unity.FPS.Game
         [Tooltip("Health ratio at which the critical health vignette starts appearing")]
         public float CriticalHealthRatio = 0.3f;
 
-        [Tooltip("The Character dies at a specifical health range and not at zero")]
-        public bool hasRandomHealthKillRange = false;
-
-        // @Fede Health Kill Range Modification
-        public float HealthKillRangeMin = 0.3f;
-        public float HealthKillRangeMax = 0.6f;
-
         public UnityAction<float, GameObject> OnDamaged;
         public UnityAction<float> OnHealed;
         public UnityAction OnDie;
@@ -32,76 +25,18 @@ namespace Unity.FPS.Game
 
         bool m_IsDead;
 
-        [Tooltip("Health Current Value is provided randomly at the start of the game")]
-        public bool m_isRandom = false;
+        public bool isRandom = false;
+
 
         void Start()
         {
-            if(m_isRandom)
-            {
-                CurrentHealth = Random.Range(10, MaxHealth);
-                randomizeHealthKillRange(CurrentHealth);
-            }
+            if (isRandom)
+                CurrentHealth = Random.Range(0f, 100f);
             else
-            {
                 CurrentHealth = MaxHealth;
-            }
         }
 
-        private void randomizeHealthKillRange(float CurrentHealth)
-        {
-            int range = Random.Range(1, 3);
-
-            if (CurrentHealth > 0f && CurrentHealth < 30f)
-            {
-                // current health in range 0 - 30 % 
-                switch (range)
-                { 
-                    case 1:
-                        setHealthRange(30f, 60f);
-                        break;
-
-                    case 2:
-                        setHealthRange(60f, 100f);
-                        break;
-                }
-            }
-            else if(CurrentHealth > 30f && CurrentHealth < 60f)
-            {
-                // current health in range 30% - 60%
-                switch (range)
-                {
-                    case 1:
-                        setHealthRange(0f, 30f);
-                        break;
-
-                    case 2:
-                        setHealthRange(60f, 100f);
-                        break;
-                }
-            }
-            else if(CurrentHealth > 60f && CurrentHealth < 100f)
-            {
-                // current health in range 60 - 100 % 
-                switch (range)
-                {
-                    case 1:
-                        setHealthRange(0f, 30f);
-                        break;
-
-                    case 2:
-                        setHealthRange(30f, 60f);
-                        break;
-                }
-            }
-
-            Debug.Log(range);
-        }
-
-        private void setHealthRange(float min, float max) {
-            HealthKillRangeMin = min;
-            HealthKillRangeMax = max;
-        }
+       
 
         public void Heal(float healAmount)
         {
@@ -151,16 +86,9 @@ namespace Unity.FPS.Game
             if (m_IsDead)
                 return;
 
-            // @Fede Overriding dying method
-            if (hasRandomHealthKillRange && CurrentHealth > HealthKillRangeMin && CurrentHealth < HealthKillRangeMax)
-            {
+             if (CurrentHealth <= 0f)
                 invokeDeath();
-            }
-            else if(!hasRandomHealthKillRange && CurrentHealth <= 0f)//  Handling death at currentHealth = 0 -> call OnDie action
-            {
-                invokeDeath();
-            }
-            
+
         }
 
         public void invokeDeath()

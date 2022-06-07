@@ -66,6 +66,7 @@ namespace Unity.FPS.Gameplay
 
         const QueryTriggerInteraction k_TriggerInteraction = QueryTriggerInteraction.Collide;
 
+
         void OnEnable()
         {
             m_ProjectileBase = GetComponent<ProjectileBase>();
@@ -222,6 +223,7 @@ namespace Unity.FPS.Gameplay
 
         void OnHit(Vector3 point, Vector3 normal, Collider collider)
         {
+
             // damage
             if (AreaOfDamage)
             {
@@ -233,6 +235,7 @@ namespace Unity.FPS.Gameplay
             {
                 // point damage
                 Damageable damageable = collider.GetComponent<Damageable>();
+                
                 if (damageable)
                 {
                     damageable.InflictDamage(Damage, false, m_ProjectileBase.Owner);
@@ -249,6 +252,7 @@ namespace Unity.FPS.Gameplay
                     Destroy(impactVfxInstance.gameObject, ImpactVfxLifetime);
                 }
             }
+
 
             // impact sfx
             if (ImpactSfxClip)

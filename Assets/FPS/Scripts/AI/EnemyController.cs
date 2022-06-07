@@ -35,7 +35,6 @@ namespace Unity.FPS.AI
         [Tooltip("Delay after death where the GameObject is destroyed (to allow for animation)")]
         public float DeathDuration = 0f;
 
-
         [Header("Weapons Parameters")] [Tooltip("Allow weapon swapping for this enemy")]
         public bool SwapToNextWeapon = false;
 
@@ -117,8 +116,13 @@ namespace Unity.FPS.AI
         WeaponController m_CurrentWeapon;
         WeaponController[] m_Weapons;
         NavigationModule m_NavigationModule;
+        Vector3 finalPosition = Vector3.zero;
 
-        void Start()
+        [SerializeField]
+        [Tooltip("The enemy attack only when attacked the first time or not")]
+        private bool attacksOnlyOnDamage = false;
+
+        protected virtual void Start()
         {
             m_EnemyManager = FindObjectOfType<EnemyManager>();
             DebugUtility.HandleErrorIfNullFindObject<EnemyManager, EnemyController>(m_EnemyManager, this);
@@ -200,11 +204,12 @@ namespace Unity.FPS.AI
             }
         }
 
-        void Update()
+        protected virtual void Update()
         {
             EnsureIsWithinLevelBounds();
 
-            DetectionModule.HandleTargetDetection(m_Actor, m_SelfColliders);
+            if (!attacksOnlyOnDamage)
+                DetectionModule.HandleTargetDetection(m_Actor, m_SelfColliders);
 
             Color currentColor = OnHitBodyGradient.Evaluate((Time.time - m_LastTimeDamaged) / FlashOnHitDuration);
             m_BodyFlashMaterialPropertyBlock.SetColor("_EmissionColor", currentColor);
@@ -338,6 +343,23 @@ namespace Unity.FPS.AI
             }
         }
 
+        public Vector3 RandomNavDestination(float radius) // Prova a farli muovere a tempo e non a spazio
+        {
+            Vector3 randomDirection = transform.position + Random.insideUnitSphere * radius;
+            NavMeshHit hit;
+
+            if (NavMesh.SamplePosition(randomDirection, out hit, radius, NavMesh.AllAreas))
+            {
+                finalPosition = hit.position;
+            }
+            return finalPosition;
+        }
+
+        public Vector3 getRandomNavigationDestination()
+        {
+            return finalPosition;
+        }
+
         void OnDamaged(float damage, GameObject damageSource)
         {
             // test if the damage source is the player
@@ -354,6 +376,16 @@ namespace Unity.FPS.AI
                     AudioUtility.CreateSFX(DamageTick, transform.position, AudioUtility.AudioGroups.DamageTick, 0f);
             
                 m_WasDamagedThisFrame = true;
+
+                // Send DamagaEvent
+                DamageEvent evt = new DamageEvent();
+                evt.EnemyDamaged = this.gameObject;
+                evt.enemyAffiliation = m_Actor.Affiliation;
+                EventManager.Broadcast(evt);
+
+                // Handles attacking only on first damage
+                if (attacksOnlyOnDamage)
+                    DetectionModule.HandleTargetDetection(m_Actor, m_SelfColliders);
             }
         }
 

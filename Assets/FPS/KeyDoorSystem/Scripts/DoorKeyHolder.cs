@@ -13,6 +13,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.FPS.Game;
+using Unity.FPS.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,6 +37,7 @@ public class DoorKeyHolder : MonoBehaviour
     [Tooltip("List of Keys currently being held")]
     public List<Key> doorKeyHoldingList = new List<Key>();
 
+
     private void Start()
     {
         keyImage.SetActive(false);
@@ -50,6 +53,10 @@ public class DoorKeyHolder : MonoBehaviour
 
             // Display the Key Image on the UI for feedback
             keyImage.SetActive(true);
+            DisplayMessageEvent evt = new DisplayMessageEvent();
+            evt.Message = "Key picked up! Go find the Door";
+            evt.DelayBeforeDisplay = 0f;
+            EventManager.Broadcast(evt);
 
             // get the missionWaypoint component from the player instance to change the objective
             MissionWaypoint mission = GetComponent<MissionWaypoint>();

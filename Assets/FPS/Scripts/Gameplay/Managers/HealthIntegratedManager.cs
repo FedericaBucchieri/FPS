@@ -19,19 +19,8 @@ namespace Unity.FPS.Game
             {
                 Renderer rend = robotPart.GetComponent<Renderer>();
                 rend.material.SetFloat("_HighPerc", healthPercentage);
+                rend.material.SetColor("_HighlightColor", Color.red);
 
-                if (healthPercentage < 0.3)
-                {
-                    rend.material.SetColor("_HighlightColor", Color.red);
-                }
-                else if (healthPercentage > 0.3 && healthPercentage < 0.6)
-                {
-                    rend.material.SetColor("_HighlightColor", Color.yellow);
-                }
-                else
-                {
-                    rend.material.SetColor("_HighlightColor", Color.green);
-                }
             }
         }
     }

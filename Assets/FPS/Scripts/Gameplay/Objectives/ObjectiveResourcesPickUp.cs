@@ -55,7 +55,7 @@ namespace Unity.FPS.Gameplay
         public GameObject power;
 
         // current number of pickup actions done
-        private int currentPickup = 0;
+        public int currentPickup = 0;
         // List of items to pickup
         private List<ResourcePickup.Type> toPickup =  new List<ResourcePickup.Type>();
         // list of items picked up
@@ -200,6 +200,14 @@ namespace Unity.FPS.Gameplay
                 {
                     reachedMaxPickup = true;
                     pickupImage.color = Color.red;
+
+                    // If objective not reached already: player dies
+                    if (!allPickedUp())
+                    {
+                        PlayerDeathEvent deathEvent = new PlayerDeathEvent();
+                        EventManager.Broadcast(deathEvent);
+                    }
+                        
                 }
             }
         }

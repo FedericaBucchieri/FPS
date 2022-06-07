@@ -12,11 +12,16 @@ namespace Unity.FPS.Gameplay
         [Tooltip("UI element for the drop command")]
         public GameObject dropResourcesCommand;
 
+        [Tooltip("UI element for the drop error message")]
+        public GameObject dropErrorMessage;
+
         PlayerCharacterController pickingPlayer;
+        bool isCompleted = false;
 
         private void Start()
         {
             dropResourcesCommand.SetActive(false);
+            dropErrorMessage.SetActive(false);
             EventManager.AddListener<DropResourceEvent>(OnDropEvent);
         }
 
@@ -26,27 +31,35 @@ namespace Unity.FPS.Gameplay
 
             if (pickingPlayer != null)
             {
-                dropResourcesCommand.SetActive(true);
+                if (objective.numberToPickUp == objective.currentPickup)
+                    dropResourcesCommand.SetActive(true);
+                else
+                    dropErrorMessage.SetActive(true);
             }
         }
 
         private void OnTriggerExit(Collider other)
         {
             dropResourcesCommand.SetActive(false);
+            dropErrorMessage.SetActive(false);
             pickingPlayer = null;
         }
 
         void OnDropEvent(DropResourceEvent evt)
         {
-            if (objective.allPickedUp())
+            if (objective.currentPickup < objective.numberToPickUp)
+                return;
+
+            if (objective.allPickedUp() && !isCompleted)
             {
+                Debug.Log("x");
+                isCompleted = true;
                 objective.CompleteObjective(string.Empty, string.Empty, "Objective complete : " + objective.Title);
             }
-            else
+            else if(!objective.allPickedUp())
             {
-                Health health = pickingPlayer.GetComponent<Health>();
-                health.CurrentHealth = 0;
-                health.HandleDeath();
+                PlayerDeathEvent deathEvent = new PlayerDeathEvent();
+                EventManager.Broadcast(deathEvent);
             }
         }
     }

@@ -34,10 +34,6 @@ namespace Unity.FPS.Gameplay
                         CompleteObjective(string.Empty, string.Empty, "Objective complete : " + Title);
                     }
                 }
-                else
-                {
-                    UpdateObjective(Description, string.Empty, string.Empty);
-                }
 
             }
             else // not valid

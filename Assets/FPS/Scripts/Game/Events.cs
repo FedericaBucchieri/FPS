@@ -63,14 +63,19 @@ namespace Unity.FPS.Game
 
     public class DamageEvent : GameEvent
     {
-        public GameObject Sender;
-        public float DamageValue;
+        public GameObject EnemyDamaged;
+        public int enemyAffiliation;
     }
 
     public class DisplayMessageEvent : GameEvent
     {
         public string Message;
         public float DelayBeforeDisplay;
+    }
+
+    public class TrainingEvent : GameEvent
+    {
+        public bool evil;
     }
 
 }
