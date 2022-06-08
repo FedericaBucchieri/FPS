@@ -97,7 +97,7 @@ public class TutorialManager : MonoBehaviour
         //yield on a new YieldInstruction that waits for 5 seconds.
         yield return new WaitForSeconds(5);
 
-        SceneManager.LoadScene("IntroMenu");
+        SceneManager.LoadScene("IntroductionTraining");
     }
 
     public void nextTutorialRule()

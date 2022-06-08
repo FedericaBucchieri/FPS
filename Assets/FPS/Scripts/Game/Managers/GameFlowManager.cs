@@ -70,12 +70,12 @@ namespace Unity.FPS.Game
                 // See if it's time to load the end scene (after the delay)
                 if (Time.time >= m_TimeLoadEndGameScene)
                 {
-                    Debug.Log("Change Scene" + SceneFlowManager.LevelPlayed + " " + SceneFlowManager.LevelToPlay);
-
-                    if(SceneFlowManager.LevelPlayed == SceneFlowManager.LevelToPlay)
-                        SceneManager.LoadScene("EndGameScene");
-                    else 
-                        SceneManager.LoadScene(m_SceneToLoad);
+                   
+                    // @TODO Fede
+                    //if(SceneFlowManager.LevelPlayed == SceneFlowManager.LevelToPlay)
+                      //  SceneManager.LoadScene("EndGameScene");
+                    //else 
+                      //  SceneManager.LoadScene(m_SceneToLoad);
 
                     GameIsEnding = false;
                 }

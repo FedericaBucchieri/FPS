@@ -20,11 +20,11 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.6313726, g: 0.6313726, b: 0.6313726, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 6cb1f6b04f29b48cf8a8ffbd68a91a36, type: 2}
   m_HaloStrength: 0.5
@@ -23863,7 +23863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d00865175781e49179bd3172c95f348b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneName: InitMenu
+  SceneName: TrainingComplete
 --- !u!114 &672435587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64564,7 +64564,7 @@ MonoBehaviour:
   healthValue: {fileID: 1021512499}
   healthValueUI: {fileID: 1255549178}
   nextButton: {fileID: 49969509}
-  enemyPrefab: {fileID: 2015434656898269652, guid: 7fec383ffafde4e8cb9a49e2686631b2,
+  enemyPrefab: {fileID: 2015434656898269652, guid: 13d5ac1faee5e47f6b78c136a9256d66,
     type: 3}
   minTrainingNumber: 10
 --- !u!65 &1711813875
