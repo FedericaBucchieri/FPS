@@ -5,13 +5,15 @@ namespace Unity.FPS.Game
 {
     public class GameFlowManager : MonoBehaviour
     {
-        [Header("Parameters")] [Tooltip("Duration of the fade-to-black at the end of the game")]
+        [Header("Parameters")]
+        [Tooltip("Duration of the fade-to-black at the end of the game")]
         public float EndSceneLoadDelay = 3f;
 
         [Tooltip("The canvas group of the fade-to-black screen")]
         public CanvasGroup EndGameFadeCanvasGroup;
 
-        [Header("Win")] [Tooltip("This string has to be the name of the scene you want to load when winning")]
+        [Header("Win")]
+        [Tooltip("This string has to be the name of the scene you want to load when winning")]
         public string WinSceneName = "WinScene";
 
         [Tooltip("Duration of delay before the fade-to-black, if winning")]
@@ -24,18 +26,9 @@ namespace Unity.FPS.Game
 
         [Tooltip("Sound played on win")] public AudioClip VictorySound;
 
-        [Header("Lose")] [Tooltip("This string has to be the name of the scene you want to load when losing")]
+        [Header("Lose")]
+        [Tooltip("This string has to be the name of the scene you want to load when losing")]
         public string LoseSceneName = "LoseScene";
-
-        [Header("Next Level")]
-        [Tooltip("This string has to be the name of the level you want to play after this scene - option 1")]
-        public string NextSceneNameOne;
-
-        [Tooltip("This string has to be the name of the level you want to play after this scene - option 2")]
-        public string NextSceneNameTwo;
-
-        [Tooltip("If there are two possible next scenes or not")]
-        public bool randomizeNextScene = false;
 
 
         public bool GameIsEnding { get; private set; }
@@ -52,10 +45,6 @@ namespace Unity.FPS.Game
         void Start()
         {
             AudioUtility.SetMasterVolume(1);
-
-            // Set Next Scene in Scene Flow Manager
-            SceneFlowManager.NextScene = RandomizeScene();
-            m_SceneToLoad = SceneFlowManager.NextScene;
         }
 
         void Update()
@@ -70,34 +59,9 @@ namespace Unity.FPS.Game
                 // See if it's time to load the end scene (after the delay)
                 if (Time.time >= m_TimeLoadEndGameScene)
                 {
-                   
-                    // @TODO Fede
-                    //if(SceneFlowManager.LevelPlayed == SceneFlowManager.LevelToPlay)
-                      //  SceneManager.LoadScene("EndGameScene");
-                    //else 
-                      //  SceneManager.LoadScene(m_SceneToLoad);
-
+                    SceneManager.LoadScene(m_SceneToLoad);
                     GameIsEnding = false;
                 }
-            }
-        }
-
-        // @ Fede - This method randomly selects the next scene to be player among the two passed as parameters
-        string RandomizeScene()
-        {
-            int random = 1;
-
-            if (randomizeNextScene)
-                random = Random.Range(1, 3);
-
-            switch (random)
-            {
-                case 1:
-                    return NextSceneNameOne;
-                case 2:
-                    return NextSceneNameTwo;
-                default:
-                    return NextSceneNameOne;
             }
         }
 
@@ -115,8 +79,6 @@ namespace Unity.FPS.Game
             EndGameFadeCanvasGroup.gameObject.SetActive(true);
             if (win)
             {
-                SceneFlowManager.LevelPlayed ++;
-
                 m_SceneToLoad = WinSceneName;
                 m_TimeLoadEndGameScene = Time.time + EndSceneLoadDelay + DelayBeforeFadeToBlack;
 
@@ -142,9 +104,6 @@ namespace Unity.FPS.Game
             }
             else
             {
-                // @ Fede - add current scene as Next scene to be played
-                SceneFlowManager.NextScene = SceneManager.GetActiveScene().name;
-
                 m_SceneToLoad = LoseSceneName;
                 m_TimeLoadEndGameScene = Time.time + EndSceneLoadDelay;
             }

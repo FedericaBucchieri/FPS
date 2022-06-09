@@ -62,5 +62,10 @@ namespace Unity.FPS.Gameplay
                 EventManager.Broadcast(deathEvent);
             }
         }
+
+        private void OnDestroy()
+        {
+            EventManager.RemoveListener<DropResourceEvent>(OnDropEvent);
+        }
     }
 }

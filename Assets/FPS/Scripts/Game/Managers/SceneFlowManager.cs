@@ -13,9 +13,11 @@ public class SceneFlowManager
 
     public static char getNextCondition()
     {
+
+        Debug.Log("Change condition");
+
         if (currentCondition.Equals('z'))
         {
-            Debug.Log("prima condition: " + currentCondition);
             currentCondition = testCondition[0];
 
         }
@@ -28,8 +30,14 @@ public class SceneFlowManager
                 currentCondition = testCondition[index + 1];
         }
 
-        Debug.Log("current condition: " + currentCondition);
         return currentCondition;
     }
 
+    public static bool needUpdateCondition()
+    {
+        if (LevelPlayed == numberOfTrials)
+            return true;
+        else
+            return false;
+    }
 }

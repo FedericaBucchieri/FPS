@@ -65,4 +65,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/FPS/Scenes/Training/TrainingComplete.unity
     guid: 55ac0cf3ce7b8490c804cf544791c596
+  - enabled: 1
+    path: Assets/FPS/Scenes/ChangeConditionScene.unity
+    guid: 032c9361d1d544458a814c4e63573aaa
   m_configObjects: {}

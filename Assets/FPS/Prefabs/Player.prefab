@@ -367,7 +367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LookSensitivity: 1
-  isWebGL: 1
+  isWebGL: 0
   WebglLookSensitivityMultiplier: 0.1
   TriggerAxisThreshold: 0.4
   InvertYAxis: 0
@@ -431,6 +431,7 @@ MonoBehaviour:
   MaxHealth: 100
   CurrentHealth: 10
   CriticalHealthRatio: 0.3
+  isRandom: 0
 --- !u!114 &298744117520805562
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -39,4 +39,9 @@ public class EnemyGenerationPoint : MonoBehaviour
             isIdle = true;
     }
 
+    private void OnDestroy()
+    {
+        EventManager.RemoveListener<EnemyKillEvent>(OnEnemyKilled);
+    }
+
 }

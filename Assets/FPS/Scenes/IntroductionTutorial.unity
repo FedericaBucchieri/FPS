@@ -694,7 +694,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: IntroductionTraining
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1628732704
@@ -899,8 +899,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Are you ready to start? \nBefore starting the experiment, you will have
-    to complete a Tutorial on the general commands of the game. You can repeate the
-    Tutorial as many times as you want, until you feel confident. Take your time,
+    to complete a Tutorial on the general commands of the game. You can repeat the
+    tutorial as many times as you want, until you feel confident. Take your time,
     you will not be evaluated during this phase."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 106dddce1f2404b45bbfa40eab1b84ea, type: 2}

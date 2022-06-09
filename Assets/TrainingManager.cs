@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.FPS.Game;
-using Unity.FPS.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Unity.FPS.Gameplay
 {
-    public class TrainingManager : Objective
+    public class TrainingManager : MonoBehaviour
     {
         private Transform respawnPoint;
 
@@ -44,9 +43,8 @@ namespace Unity.FPS.Gameplay
         int trainingDone = 0;
         GameObject currentEnemy;
 
-        protected override void Start()
+         void Start()
         {
-            base.Start();
 
             // set the respawn point 
             respawnPoint = this.transform;
@@ -71,26 +69,33 @@ namespace Unity.FPS.Gameplay
 
 
             // validate answer
-            Health currentEnemyHealth = currentEnemy.GetComponent<Health>();
+            if(currentEnemy != null)
+            {
+                Health currentEnemyHealth = currentEnemy.GetComponent<Health>();
 
-            if ((evt.evil && currentEnemyHealth.CurrentHealth > 66f) || (!evt.evil && currentEnemyHealth.CurrentHealth < 66f))
-                correctUI.SetActive(true);
-            else
-                wrongUI.SetActive(true);
+                if ((evt.evil && currentEnemyHealth.CurrentHealth > 66f) || (!evt.evil && currentEnemyHealth.CurrentHealth < 66f))
+                    correctUI.SetActive(true);
+                else
+                    wrongUI.SetActive(true);
 
-            healthValueUI.SetActive(true);
-            healthValue.text = " Health Value: " + (int)currentEnemyHealth.CurrentHealth + "%";
-            nextButton.SetActive(true);
+                healthValueUI.SetActive(true);
+                healthValue.text = " Health Value: " + (int)currentEnemyHealth.CurrentHealth + "%";
+                nextButton.SetActive(true);
 
 
-            if (trainingDone >= minTrainingNumber)
-                quitUI.SetActive(true);
+                if (trainingDone >= minTrainingNumber)
+                    quitUI.SetActive(true);
+            }
+
+            
         }
 
         public void DisplayNextTraining()
         {
             // destroy current enemy
-            Destroy(currentEnemy.gameObject);
+            //Destroy(currentEnemy.gameObject);
+
+            currentEnemy.gameObject.SetActive(false);
 
             // reset UI
             healthValueUI.SetActive(false);
@@ -100,9 +105,15 @@ namespace Unity.FPS.Gameplay
 
             // instantiate the next enemy
             currentEnemy = Instantiate(enemyPrefab, respawnPoint.position, Quaternion.identity);
+            currentEnemy.gameObject.SetActive(true);
             // initialize buttons
             goodButton.SetActive(true);
             evilButton.SetActive(true);
+        }
+
+        void OnDestroy()
+        {
+            EventManager.RemoveListener<TrainingEvent>(OnTrainingEvent);
         }
 
     }

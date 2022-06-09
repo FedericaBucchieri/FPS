@@ -419,8 +419,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.0211, y: 126.904175}
-  m_SizeDelta: {x: 894.395, y: 206.1916}
+  m_AnchoredPosition: {x: -1.0211, y: 115}
+  m_SizeDelta: {x: 894.395, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &653382597
 MonoBehaviour:
@@ -822,7 +822,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1628732706}
         m_TargetAssemblyTypeName: Unity.FPS.UI.StartButton, fps.UI
-        m_MethodName: getNextScene
+        m_MethodName: getNextSceneUpdatingCondition
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1180,10 +1180,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "You completed the Tutorial successfully! \nNow you can start the training
-    sessions that is the last step before  playing the game. During the training
-    sessions you are going to be introduced to data visualizations under evaluation.
-    Are you ready to start or do you want to restart the tutorial one more time?  "
+  m_text: "You completed the Tutorial successfully! \nNow you can start a training
+    session to learn how to interpret the data visualization under examination. You
+    can repeat the training as many times as you want, until you feel confident.
+    Take your time, you will not be evaluated during this phase. Are you ready to
+    start or do you want to restart the tutorial one more time?\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 106dddce1f2404b45bbfa40eab1b84ea, type: 2}
   m_sharedMaterial: {fileID: 21649359081121634, guid: 106dddce1f2404b45bbfa40eab1b84ea,

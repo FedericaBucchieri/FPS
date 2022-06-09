@@ -101,5 +101,9 @@ namespace Unity.FPS.Gameplay
                 CompleteObjective(string.Empty, string.Empty, "Objective failed");
         }
 
+        private void OnDestroy()
+        {
+            EventManager.RemoveListener<EnemyKillEvent>(OnEnemyKilled);
+        }
     }
 }

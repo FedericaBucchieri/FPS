@@ -464,8 +464,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "After a blackout, some robots became Evil. \nYou can distinguish evil
-    robots from their health level that is greater than 66%."
+  m_text: "In the experiment, you will have to distinguish between Good and Evil
+    robots. \nGood robots have an health percentage below 66%, Evil robots above
+    66%."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 75063828274bdb145a55f6dd2f22e8b2, type: 2}
   m_sharedMaterial: {fileID: 21098970014090698, guid: 75063828274bdb145a55f6dd2f22e8b2,
@@ -689,7 +690,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Eliminate all the evil robots to win.
+  m_text: During this training you will learn how to distinguish them. A robot will
+    be presented to you and you will have to decide whether is good or evil by using
+    the relative buttons.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 75063828274bdb145a55f6dd2f22e8b2, type: 2}
   m_sharedMaterial: {fileID: 21098970014090698, guid: 75063828274bdb145a55f6dd2f22e8b2,
@@ -1122,8 +1125,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "After a blackout, some robots became Evil. \nYou can distinguish evil
-    robots from their health level that is greater than 66%."
+  m_text: "In the experiment, you will have to distinguish between Good and Evil
+    robots. \nGood robots have an health percentage below 66%, Evil robots above
+    66%."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 75063828274bdb145a55f6dd2f22e8b2, type: 2}
   m_sharedMaterial: {fileID: 21098970014090698, guid: 75063828274bdb145a55f6dd2f22e8b2,
@@ -1258,8 +1262,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Pay attention not to shoot the good robots! \nAfter 2 mistakes you will
-    lose the game."
+  m_text: You will immediately know if you answered correctly and the real health
+    percentage of the robot. You can quit the training only after 10 rounds.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 75063828274bdb145a55f6dd2f22e8b2, type: 2}
   m_sharedMaterial: {fileID: 21098970014090698, guid: 75063828274bdb145a55f6dd2f22e8b2,
@@ -1997,7 +2001,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Eliminate all the evil robots to win.
+  m_text: During this training you will learn how to distinguish them. A robot will
+    be presented to you and you will have to decide whether is good or evil by using
+    the relative buttons.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 75063828274bdb145a55f6dd2f22e8b2, type: 2}
   m_sharedMaterial: {fileID: 21098970014090698, guid: 75063828274bdb145a55f6dd2f22e8b2,

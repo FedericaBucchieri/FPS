@@ -19,6 +19,13 @@ namespace Unity.FPS.UI
 
         public void LoadTargetScene()
         {
+            if (SceneFlowManager.needUpdateCondition())
+            {
+                SceneFlowManager.getNextCondition();
+                if (SceneFlowManager.currentCondition.Equals('e'))
+                    SceneManager.LoadScene("EndGameScene");
+            }
+
             SceneManager.LoadScene(SceneFlowManager.NextScene);
         }
 

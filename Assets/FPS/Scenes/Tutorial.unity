@@ -62602,7 +62602,7 @@ MonoBehaviour:
   DelayBeforeWinMessage: 2
   VictorySound: {fileID: 8300000, guid: a533219934975884e81c1add37af9930, type: 3}
   LoseSceneName: IntroMenu
-  NextSceneNameOne: IntroMenu
+  NextSceneNameOne: 
   NextSceneNameTwo: 
   randomizeNextScene: 0
 --- !u!1 &1315839543361981308
