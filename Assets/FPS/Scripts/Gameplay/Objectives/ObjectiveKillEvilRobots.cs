@@ -92,15 +92,28 @@ namespace Unity.FPS.Gameplay
             {
                 // decrease number of robot to eliminate
                 evilRobotEliminated++;
+
+                // log event
+                KillEvilRobotEvent killEvent = new KillEvilRobotEvent();
+                EventManager.Broadcast(killEvent);
+
+                //check Winnind Conditions
                 checkWinningCondition();
             }
+            else if(affiliation == GOOD)
+            {
+                // log event
+                KillGoodRobotEvent killEvent = new KillGoodRobotEvent();
+                EventManager.Broadcast(killEvent);
+            }
+
         }
 
         void checkWinningCondition()
         {
             if (evilRobotEliminated < evilRobotNumber)
                 UpdateObjective(string.Empty, evilRobotEliminated + "/" + evilRobotNumber, evilRobotNumber - evilRobotEliminated + " evil robots left");
-            else 
+            else
                 CompleteObjective(string.Empty, string.Empty, "Objective complete : " + Title);
 
         }

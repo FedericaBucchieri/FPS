@@ -37,10 +37,7 @@ namespace Unity.FPS.Gameplay
         [SerializeField]
         private GameObject enemyPrefab;
 
-        [SerializeField]
-        private int minTrainingNumber = 10;
-
-        int trainingDone = 0;
+        int trainingCorrect = 0;
         GameObject currentEnemy;
 
          void Start()
@@ -57,12 +54,13 @@ namespace Unity.FPS.Gameplay
             goodButton.SetActive(true);
             evilButton.SetActive(true);
             healthValueUI.SetActive(false);
+
+            StartTrainingEvent evt = new StartTrainingEvent();
+            EventManager.Broadcast(evt);
         }
 
         void OnTrainingEvent(TrainingEvent evt)
         {
-            // update conting
-            trainingDone++;
             // initialize buttons
             goodButton.SetActive(false);
             evilButton.SetActive(false);
@@ -74,7 +72,13 @@ namespace Unity.FPS.Gameplay
                 Health currentEnemyHealth = currentEnemy.GetComponent<Health>();
 
                 if ((evt.evil && currentEnemyHealth.CurrentHealth > 66f) || (!evt.evil && currentEnemyHealth.CurrentHealth < 66f))
+                {
                     correctUI.SetActive(true);
+                    trainingCorrect++;
+                    // logging a correct answer in training
+                    CorrectTrainingEvent correctLog = new CorrectTrainingEvent();
+                    EventManager.Broadcast(correctLog);
+                }
                 else
                     wrongUI.SetActive(true);
 
@@ -83,7 +87,7 @@ namespace Unity.FPS.Gameplay
                 nextButton.SetActive(true);
 
 
-                if (trainingDone >= minTrainingNumber)
+                if (trainingCorrect >= GameConstants.minTrainingNumber)
                     quitUI.SetActive(true);
             }
 
@@ -114,6 +118,9 @@ namespace Unity.FPS.Gameplay
         void OnDestroy()
         {
             EventManager.RemoveListener<TrainingEvent>(OnTrainingEvent);
+
+            EndTrainingEvent evt = new EndTrainingEvent();
+            EventManager.Broadcast(evt);
         }
 
     }

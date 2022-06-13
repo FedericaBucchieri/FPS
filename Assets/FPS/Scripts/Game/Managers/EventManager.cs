@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using UnityEngine;
 
 namespace Unity.FPS.Game
 {
+
     public class GameEvent
     {
     }
@@ -14,6 +17,11 @@ namespace Unity.FPS.Game
 
         static readonly Dictionary<Delegate, Action<GameEvent>> s_EventLookups =
             new Dictionary<Delegate, Action<GameEvent>>();
+
+        public static string participantID;
+        public static string conditions;
+        public static string testCase;
+        public static string filePath;
 
         public static void AddListener<T>(Action<T> evt) where T : GameEvent
         {
@@ -48,14 +56,27 @@ namespace Unity.FPS.Game
 
         public static void Broadcast(GameEvent evt)
         {
+            // Logging events 
+            addRecord(evt.GetType().Name);
+            Debug.Log(evt.GetType().ToString());
+
             if (s_Events.TryGetValue(evt.GetType(), out var action))
+            {
                 action.Invoke(evt);
+            }
         }
 
         public static void Clear()
         {
             s_Events.Clear();
             s_EventLookups.Clear();
+        }
+
+        public static void addRecord(string eventType)
+        {
+            DateTime dt = DateTime.Now;
+            string log = GameConstants.participantID + "," + dt.ToString("dd-MM-yyyy") + "," + SceneFlowManager.getTestCondition() + "," + SceneFlowManager.currentCondition + "," + dt.ToString("HH:mm:ss") + "," + eventType + "\n";
+            File.AppendAllText(GameConstants.logFilePath, log);
         }
     }
 }

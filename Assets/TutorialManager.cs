@@ -48,8 +48,28 @@ using UnityEngine.SceneManagement;
                     if (worldspaceMoveInput != Vector3.zero) // if the player moved
                         currentPopUp.endTrigger = true;
                     break;
+                case 1: // Shooting tutorial
+                    if (m_InputHandler.GetFireInputDown())
+                        currentPopUp.endTrigger = true;
+                    break;
+                case 2: // Jump tutorial
+                    if (m_InputHandler.GetJumpInputDown())
+                        currentPopUp.endTrigger = true;
+                    break;
+                case 3: // Aim tutorial
+                    if (m_InputHandler.GetAimInputHeld())
+                    {
+                        currentPopUp.endTrigger = true;
+                        // ending Tutorial
+                        endTutorial();
+                    }
+                    break;
+                case 4: //exit Tutorial
+                    endTutorial();
+                    break;
+                /*
 
-                case 1: // Sprint tutorial
+            case 1: // Sprint tutorial
                     if (m_InputHandler.GetSprintInputHeld())
                         currentPopUp.endTrigger = true;
                     break;
@@ -81,8 +101,9 @@ using UnityEngine.SceneManagement;
                         endTutorial();
                     }
                     break;
-            }
+                */
         }
+    }
 
         void endTutorial()
         {
@@ -101,6 +122,15 @@ using UnityEngine.SceneManagement;
             SceneManager.LoadScene("IntroductionTraining");
         }
 
+        public void DisplayTutorialRule(int index)
+    {
+        popUpIndex = index;
+        currentPopUp = popUps[popUpIndex].GetComponent<TutorialNotification>();
+        currentPopUp.Initialized = true;
+        DisplayMessageRect.UpdateTable(currentPopUp.gameObject);
+    }
+
+    /*
         public void nextTutorialRule()
         {
             popUpIndex++;
@@ -108,4 +138,5 @@ using UnityEngine.SceneManagement;
             currentPopUp.Initialized = true;
             DisplayMessageRect.UpdateTable(currentPopUp.gameObject);
         }
-    }
+    */
+}

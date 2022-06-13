@@ -7,9 +7,8 @@ namespace Unity.FPS.Gameplay
 {
     public class ObjectiveSaveGoodRobots : Objective
     {
-        [SerializeField]
         [Tooltip("Number of enemy that you could kill by mistake")]
-        private int mistakesAllowed = 2;
+        private int mistakesAllowed = 3;
 
         private int mistakesDone = 0;
 
@@ -21,6 +20,8 @@ namespace Unity.FPS.Gameplay
 
         // Affiliation Static values
         private static int GOOD = 0;
+        // Affiliation Static values
+        private static int EVIL = 1;
 
         // Start is called before the first frame update
         protected override void Start()
@@ -41,17 +42,26 @@ namespace Unity.FPS.Gameplay
 
             if (evt.enemyAffiliation == GOOD)
             {
-                Debug.Log(!damagedByMistake.Contains(evt.EnemyDamaged));
+                
                 if (!damagedByMistake.Contains(evt.EnemyDamaged))
                 {
                     damagedByMistake.Add(evt.EnemyDamaged);
                     mistakesDone++;
 
-                    UpdateObjective(string.Empty, mistakesDone + "/" + mistakesAllowed, "You can hit a good robot " + mistakesAllowed + " time left");
+                    UpdateObjective(string.Empty, mistakesDone + "/" + mistakesAllowed, "You can hit a good robot " + (mistakesAllowed - mistakesDone) + " time left");
 
                     if (mistakesDone == mistakesAllowed)
                         player.Kill();
                 }
+
+                HitGoodRobotEvent hit = new HitGoodRobotEvent();
+                EventManager.Broadcast(hit);
+            }
+
+            else if (evt.enemyAffiliation == EVIL)
+            {
+                HitEvilRobotEvent hit = new HitEvilRobotEvent();
+                EventManager.Broadcast(hit);
             }
         }
 

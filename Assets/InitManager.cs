@@ -1,27 +1,27 @@
 using System.Collections.Generic;
 using Unity.FPS.Game;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.IO;
+using System;
+using UnityEngine.UI;
 
 public class InitManager : MonoBehaviour
 {
     public GameObject participantID;
-    public GameObject testCondition;
-    public GameObject numberOfTrials;
-
     public GameObject participantError;
-    public GameObject conditionError;
-    public GameObject numberError;
 
     public Button startButton;
 
     [SerializeField]
     private string sceneToLoad;
 
+    char[] array;
+
+
     public void SetParticipantID(string participantID)
     {
-        if(participantID == null || participantID == "")
+        if (participantID == null || participantID == "")
         {
             participantError.SetActive(true);
             return;
@@ -34,79 +34,70 @@ public class InitManager : MonoBehaviour
             participantError.SetActive(true);
         else
             GameConstants.participantID = id;
-    }
 
-    public void SetTestCondition(string testCondition)
-    {
-
-        if (testCondition == null || testCondition == "")
+        switch (id % 6)
         {
-            conditionError.SetActive(true);
-            return;
+            case 1:
+                array = GameConstants.condition_1.ToCharArray();
+                break;
+            case 2:
+                array = GameConstants.condition_2.ToCharArray();
+                break;
+            case 3:
+                array = GameConstants.condition_3.ToCharArray();
+                break;
+            case 4:
+                array = GameConstants.condition_4.ToCharArray();
+                break;
+            case 5:
+                array = GameConstants.condition_5.ToCharArray();
+                break;
+            case 0:
+                array = GameConstants.condition_6.ToCharArray();
+                break;
 
         }
 
-
-        char[] conditions = testCondition.ToCharArray();
-
-        foreach (char c in conditions)
+        foreach (char c in array)
         {
-            if (c.Equals('A') || c.Equals('B') || c.Equals('C'))
-                SceneFlowManager.testCondition.Add(c);
-            else
-            {
-                conditionError.SetActive(true);
-                SceneFlowManager.testCondition = new List<char>();
-                return;
-            }
+            SceneFlowManager.testCondition = new List<char>();
+            SceneFlowManager.testCondition.Add(c);
         }
-
     }
 
-    public void SetNumberOfTrials(string numberOfTrials)
-    {
-        if (numberOfTrials == null || numberOfTrials == "")
-        {
-            numberError.SetActive(true);
-            return;
 
-        }
-
-        int num = int.Parse(numberOfTrials);
-
-        if (num <= 0 | num > 10)
-            numberError.SetActive(true);
-        else 
-            SceneFlowManager.numberOfTrials = int.Parse(numberOfTrials);
-
-    }
 
     public void deactivateParticipantError()
     {
         participantError.SetActive(false);
     }
 
-    public void deactivateNumberError()
-    {
-        numberError.SetActive(false);
-    }
-
-    public void deactivateConditionError()
-    {
-        conditionError.SetActive(false);
-    }
-
     private void Update()
     {
 
-        if (GameConstants.participantID != 0 &&
-            SceneFlowManager.numberOfTrials != 0 &&
-            SceneFlowManager.testCondition.Count != 0)
+        if (GameConstants.participantID != 0)
             startButton.interactable = true;
     }
 
     public void StartTrial()
     {
+        CreateFile();
+
         SceneManager.LoadScene(sceneToLoad);
+    }
+
+
+    public void CreateFile()
+    {
+        // path to user Desktop
+        string path = Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop) + "/Log_" + GameConstants.participantID +".txt";
+
+        if (!File.Exists(path))
+        {
+            File.WriteAllText(path, "Participant ID, Date, Test Condition, Current Condition, Timestamp, Event Type \n");
+        }
+
+        GameConstants.logFilePath = path;
+
     }
 }

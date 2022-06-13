@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Unity.FPS.Game;
 using UnityEngine;
 
 public class SceneFlowManager
@@ -8,8 +9,13 @@ public class SceneFlowManager
     public static List<char> testCondition = new List<char>();
     public static char currentCondition = 'z';
     public static int LevelPlayed = 0;
-    public static int numberOfTrials = 0;
 
+    public SceneFlowManager()
+    {
+        testCondition.Add('A');
+        testCondition.Add('B');
+        testCondition.Add('C');
+    }
 
     public static char getNextCondition()
     {
@@ -19,7 +25,6 @@ public class SceneFlowManager
         if (currentCondition.Equals('z'))
         {
             currentCondition = testCondition[0];
-
         }
         else
         {
@@ -35,9 +40,14 @@ public class SceneFlowManager
 
     public static bool needUpdateCondition()
     {
-        if (LevelPlayed == numberOfTrials)
+        if (LevelPlayed == GameConstants.number_of_trials)
             return true;
         else
             return false;
+    }
+
+    public static string getTestCondition()
+    {
+        return testCondition[0].ToString() + testCondition[1].ToString() + testCondition[2].ToString();
     }
 }

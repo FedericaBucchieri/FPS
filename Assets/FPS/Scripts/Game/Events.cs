@@ -18,6 +18,16 @@ namespace Unity.FPS.Game
         public static AmmoPickupEvent AmmoPickupEvent = new AmmoPickupEvent();
         public static DamageEvent DamageEvent = new DamageEvent();
         public static DisplayMessageEvent DisplayMessageEvent = new DisplayMessageEvent();
+        public static TrainingEvent TrainingEvent = new TrainingEvent();
+        public static CorrectTrainingEvent CorrectTrainingEvent = new CorrectTrainingEvent();
+        public static HitGoodRobotEvent HitGoodRobotEvent = new HitGoodRobotEvent();
+        public static HitEvilRobotEvent HitEvilRobotEvent = new HitEvilRobotEvent();
+        public static KillEvilRobotEvent KillEvilRobotEvent = new KillEvilRobotEvent();
+        public static KillGoodRobotEvent KillGoodRobotEvent = new KillGoodRobotEvent();
+        public static StartTrialEvent StartTrialEvent = new StartTrialEvent();
+        public static EndTrialEvent EndTrialEvent = new EndTrialEvent();
+        public static StartTrainingEvent StartTrainingEvent = new StartTrainingEvent();
+        public static EndTrainingEvent EndTrainingEvent = new EndTrainingEvent();
     }
 
     public class ObjectiveUpdateEvent : GameEvent
@@ -77,5 +87,23 @@ namespace Unity.FPS.Game
     {
         public bool evil;
     }
+
+    public class CorrectTrainingEvent: GameEvent { }
+
+    public class HitGoodRobotEvent : GameEvent { }
+
+    public class HitEvilRobotEvent : GameEvent { }
+
+    public class KillGoodRobotEvent : GameEvent { }
+
+    public class KillEvilRobotEvent : GameEvent { }
+
+    public class StartTrialEvent : GameEvent { }
+
+    public class EndTrialEvent : GameEvent { }
+
+    public class EndTrainingEvent : GameEvent { }
+
+    public class StartTrainingEvent : GameEvent { }
 
 }

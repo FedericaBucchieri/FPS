@@ -5,11 +5,16 @@ using UnityEngine;
 public class TutorialTrigger : MonoBehaviour
 {
 
-    public TutorialManager tutorialManager;
+    [SerializeField]
+    TutorialManager tutorialManager;
+
+    [SerializeField]
+    int tutorialIndex;
+    
 
     private void OnTriggerEnter(Collider other)
     {
-        tutorialManager.nextTutorialRule();
+        tutorialManager.DisplayTutorialRule(tutorialIndex);
     }
 
     private void OnTriggerExit(Collider other)

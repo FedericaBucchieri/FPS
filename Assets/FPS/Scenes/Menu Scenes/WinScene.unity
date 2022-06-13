@@ -726,7 +726,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1249756855}
         m_TargetAssemblyTypeName: Unity.FPS.UI.StartButton, fps.UI
-        m_MethodName: getNextSceneCheckingTrialsNumber
+        m_MethodName: goToPreviousScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

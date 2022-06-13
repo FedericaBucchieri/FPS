@@ -41,21 +41,9 @@ namespace Unity.FPS.UI
                 SceneManager.LoadScene(sceneType + condition);
         }
 
-        public void getNextSceneCheckingTrialsNumber()
+        public void goToPreviousScene()
         {
-            if (SceneFlowManager.LevelPlayed == SceneFlowManager.numberOfTrials)
-            {
-                char condition = SceneFlowManager.getNextCondition();
-                SceneFlowManager.LevelPlayed = 0;
-
-                if (condition.Equals('e'))
-                    SceneManager.LoadScene("EndGameScene");
-                else
-                    SceneManager.LoadScene("ChangeConditionScene");
-            }
-            else
-                SceneManager.LoadScene("Health" + SceneFlowManager.currentCondition);
-                
+            SceneManager.LoadScene("Health" + SceneFlowManager.currentCondition);     
         }
     }
 }
