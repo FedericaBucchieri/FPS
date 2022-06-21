@@ -13,9 +13,10 @@ namespace Unity.FPS.UI
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            EventSystem.current.SetSelectedGameObject(null);
+            //EventSystem.current.SetSelectedGameObject(null);
         }
 
+        /*
         void LateUpdate()
         {
             if (EventSystem.current.currentSelectedGameObject == null)
@@ -28,5 +29,6 @@ namespace Unity.FPS.UI
                 }
             }
         }
+        */
     }
 }

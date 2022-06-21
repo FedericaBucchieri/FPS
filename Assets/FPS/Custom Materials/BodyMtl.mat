@@ -63,7 +63,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _HighPerc: 0.821
+    - _HighPerc: 0.571
     - _LocalMax: 0.15
     - _LocalMin: -1.09
     - _Metallic: 0

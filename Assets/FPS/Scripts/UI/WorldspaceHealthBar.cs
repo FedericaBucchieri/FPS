@@ -16,11 +16,19 @@ namespace Unity.FPS.UI
 
         [Tooltip("Whether the health bar is visible when at full health or not")]
         public bool HideFullHealthBar = true;
+
+        [Tooltip("Is overlapping or not")]
+        public bool isOverlapping = false;
+
+        [SerializeField]
+        private Canvas canvas;
+
         private void Start()
         {
             HealthBarImage.color = Color.red;
         }
 
+        private float angle;
 
         void Update()
         {
@@ -28,27 +36,22 @@ namespace Unity.FPS.UI
             float healthPercentage = Health.CurrentHealth / Health.MaxHealth;
             HealthBarImage.fillAmount = healthPercentage;
 
-            /* Color encoding implementation
-            if (healthPercentage < 0.3)
-            {
-                HealthBarImage.color = Color.red;
-            }
-            else if (healthPercentage > 0.3 && healthPercentage < 0.6)
-            {
-                HealthBarImage.color = Color.yellow;
-            }
-            else
-            {
-                HealthBarImage.color = Color.green;
-            }
-            */
-
             // rotate health bar to face the camera/player
                 HealthBarPivot.LookAt(Camera.main.transform.position);
 
             // hide health bar if needed
             if (HideFullHealthBar)
                 HealthBarPivot.gameObject.SetActive(HealthBarImage.fillAmount != 1);
+
+            if (isOverlapping)
+            {
+                Vector3 relativePos = Camera.main.transform.position - transform.position;
+
+                // the second argument, upwards, defaults to Vector3.up
+                Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+                canvas.transform.rotation = rotation;
+            }
+            
         }
     }
 }

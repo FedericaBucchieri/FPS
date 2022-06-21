@@ -59141,7 +59141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acc67e279eebe4c63853bb5c1e91058a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quitUI: {fileID: 0}
+  quitUI: {fileID: 180609190}
   goodButton: {fileID: 1842394959}
   evilButton: {fileID: 1227578568}
   correctUI: {fileID: 810928059}
@@ -59149,7 +59149,7 @@ MonoBehaviour:
   healthValue: {fileID: 1021512499}
   healthValueUI: {fileID: 1255549178}
   nextButton: {fileID: 49969509}
-  enemyPrefab: {fileID: 2015434656898269652, guid: 6fbd4cbc7dd4a4e23a08f6aa0fc3c190,
+  enemyPrefab: {fileID: 2015434656898269652, guid: 13e35bfe7793a4da483d7826457051e3,
     type: 3}
 --- !u!65 &1711813875
 BoxCollider:
@@ -59172,7 +59172,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1711813871}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 23.98, y: 0.69, z: 19.25}
+  m_LocalPosition: {x: 23.98, y: 0, z: 19.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

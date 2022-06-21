@@ -32,6 +32,7 @@ namespace Unity.FPS.Game
         // Empirical Evaluation constraints
         public static int participantID = 0;
         public static string logFilePath;
+        public static string questionnaireFilePath;
         public static string condition_1 = "ABC";
         public static string condition_2 = "ACB";
         public static string condition_3 = "BAC";
@@ -39,7 +40,7 @@ namespace Unity.FPS.Game
         public static string condition_5 = "CAB";
         public static string condition_6 = "CBA";
         public static int number_of_trials = 1;
-        public static float totalTrialTime = 600f;
+        public static float totalTrialTime = 60f;
         public static float playedTrialTime = 0f;
         public static int minTrainingNumber = 1; 
 

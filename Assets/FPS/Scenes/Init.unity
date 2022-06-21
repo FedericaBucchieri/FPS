@@ -155,7 +155,7 @@ MonoBehaviour:
   participantID: {fileID: 1261908752}
   participantError: {fileID: 883710946}
   startButton: {fileID: 1628732703}
-  sceneToLoad: IntroductionTraining
+  sceneToLoad: IntroductionTutorial
 --- !u!4 &93469558
 Transform:
   m_ObjectHideFlags: 0

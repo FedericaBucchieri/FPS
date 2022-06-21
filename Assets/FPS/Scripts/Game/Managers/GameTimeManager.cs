@@ -23,8 +23,6 @@ public class GameTimeManager : MonoBehaviour
 
         GameConstants.playedTrialTime += Time.deltaTime;
 
-        Debug.Log(GameConstants.playedTrialTime);
-
         if (GameConstants.playedTrialTime >= GameConstants.totalTrialTime)
         {
             GameOver();
@@ -38,14 +36,12 @@ public class GameTimeManager : MonoBehaviour
         EndTrialEvent evt = new EndTrialEvent();
         EventManager.Broadcast(evt);
 
-        // Change condition
-        char condition = SceneFlowManager.getNextCondition();
+        // reset timer
         SceneFlowManager.LevelPlayed = 0;
         GameConstants.playedTrialTime = 0f;
 
-        if (condition.Equals('e'))
-            SceneManager.LoadScene("EndGameScene");
-        else
-            SceneManager.LoadScene("ChangeConditionScene");
+
+        // go to in game questionnaire
+        SceneManager.LoadScene("ChangeConditionScene");
     }
 }

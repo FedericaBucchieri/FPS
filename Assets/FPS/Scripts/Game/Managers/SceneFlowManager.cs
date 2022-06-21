@@ -20,8 +20,6 @@ public class SceneFlowManager
     public static char getNextCondition()
     {
 
-        Debug.Log("Change condition");
-
         if (currentCondition.Equals('z'))
         {
             currentCondition = testCondition[0];
@@ -34,6 +32,8 @@ public class SceneFlowManager
             else 
                 currentCondition = testCondition[index + 1];
         }
+
+        Debug.Log("Change condition to " + currentCondition);
 
         return currentCondition;
     }
@@ -48,6 +48,10 @@ public class SceneFlowManager
 
     public static string getTestCondition()
     {
-        return testCondition[0].ToString() + testCondition[1].ToString() + testCondition[2].ToString();
+        // handling default for Logging
+        if (testCondition.Count != 0)
+            return testCondition[0].ToString() + testCondition[1].ToString() + testCondition[2].ToString();
+        else
+            return "XXX";
     }
 }

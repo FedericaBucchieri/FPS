@@ -56,10 +56,13 @@ namespace Unity.FPS.Game
 
         public static void Broadcast(GameEvent evt)
         {
-            // Logging events 
-            addRecord(evt.GetType().Name);
-            Debug.Log(evt.GetType().ToString());
-
+   
+            // Questionnare answers
+            if (evt.GetType().Name == "SendQuestionnaireAnswerEvent")
+                addAnswer((SendQuestionnaireAnswerEvent)evt);
+            else         // Logging events
+                addRecord(evt.GetType().Name);
+          
             if (s_Events.TryGetValue(evt.GetType(), out var action))
             {
                 action.Invoke(evt);
@@ -74,9 +77,19 @@ namespace Unity.FPS.Game
 
         public static void addRecord(string eventType)
         {
-            DateTime dt = DateTime.Now;
-            string log = GameConstants.participantID + "," + dt.ToString("dd-MM-yyyy") + "," + SceneFlowManager.getTestCondition() + "," + SceneFlowManager.currentCondition + "," + dt.ToString("HH:mm:ss") + "," + eventType + "\n";
-            File.AppendAllText(GameConstants.logFilePath, log);
+                DateTime dt = DateTime.Now;
+                string log = GameConstants.participantID + "," + dt.ToString("dd-MM-yyyy") + "," + SceneFlowManager.getTestCondition() + "," + SceneFlowManager.currentCondition + "," + dt.ToString("HH:mm:ss") + "," + eventType + "\n";
+                File.AppendAllText(GameConstants.logFilePath, log);
+        }
+
+        public static void addAnswer(SendQuestionnaireAnswerEvent evt)
+        {
+            for(int i = 0; i < evt.answers.Length; i++)
+            {
+                DateTime dt = DateTime.Now;
+                string log = GameConstants.participantID + "," + dt.ToString("dd-MM-yyyy") + "," + SceneFlowManager.getTestCondition() + "," + SceneFlowManager.currentCondition + "," + dt.ToString("HH:mm:ss") + "," + evt.answers[i] + "\n";
+                File.AppendAllText(GameConstants.questionnaireFilePath, log);
+            }
         }
     }
 }

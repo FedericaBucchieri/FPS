@@ -23,6 +23,11 @@ namespace Unity.FPS.Gameplay
         private static int GOOD = 0;
         private static int EVIL = 1;
 
+        private static int[] healthValues = { 18, 32, 43, 58, 72, 83 };
+        private int currentIndex = 0;
+        private int robotPerValue = 5;
+        private float healthThreeshold = 66f;
+
         // Use this for initialization
         protected override void Start()
         {
@@ -40,32 +45,27 @@ namespace Unity.FPS.Gameplay
 
         void assignRobotsAffiliation()
         {
-            int evilRobotInstantiated = 0;
-
+            // shuffle robot list
             robots = Shuffle(robots);
 
-            foreach (GameObject robot in robots)
+            // for each health value instatiate #robotPerValue robots
+            // assigning affiliation and health
+            foreach (int healthValue in healthValues)
             {
-                // Assign an affiliation to the robots randomly between 0 and 1
-                Actor actor = robot.GetComponent<Actor>();
-
-                if(evilRobotInstantiated < evilRobotNumber)
+                for(int i = currentIndex; i < currentIndex + robotPerValue; i++)
                 {
-                    actor.Affiliation = EVIL;
-                    evilRobotInstantiated++;
+                    Actor actor = robots[i].GetComponent<Actor>();
+                    Health health = robots[i].GetComponent<Health>();
+                    health.CurrentHealth = healthValue;
+
+                    if (healthValue > healthThreeshold)
+                        actor.Affiliation = EVIL;
+                    else
+                        actor.Affiliation = GOOD;
                 }
-                else
-                    actor.Affiliation = GOOD;
- 
-
-                // Randomize health values according to the affiliation
-                // affiliation = 0 (good) -> health between 0% and 66%
-                // affiliation = 1 (evil) -> health between 67% and 100%
-                Health health = robot.GetComponent<Health>();
-                health.CurrentHealth = getRandomHealthValue(actor.Affiliation);
+                currentIndex += robotPerValue;
+                
             }
-
-            Debug.Log(evilRobotInstantiated);
         }
 
         public GameObject[] Shuffle(GameObject[] objectList)
@@ -116,20 +116,6 @@ namespace Unity.FPS.Gameplay
             else
                 CompleteObjective(string.Empty, string.Empty, "Objective complete : " + Title);
 
-        }
-
-        float getRandomHealthValue(int affiliation)
-        {
-            if (affiliation == 0)
-            {
-                return Random.Range(0f, 66f);
-            }
-            else if (affiliation == 1)
-            {
-                return Random.Range(66f, 100f);
-            }
-            else
-                return 0f;
         }
 
         void OnDestroy()

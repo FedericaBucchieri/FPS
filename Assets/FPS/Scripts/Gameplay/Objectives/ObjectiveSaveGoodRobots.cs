@@ -27,7 +27,7 @@ namespace Unity.FPS.Gameplay
         protected override void Start()
         {
             Title = "Ignore the Good Robots";
-            Description = "Don't hit good robots more than " + mistakesAllowed + " times";
+            Description = "Don't damage more than " + mistakesAllowed + " Good robots";
 
             // Always a Secondary Objective, paired with ObjectiveKillEvilRobots
             IsOptional = true;
@@ -48,7 +48,7 @@ namespace Unity.FPS.Gameplay
                     damagedByMistake.Add(evt.EnemyDamaged);
                     mistakesDone++;
 
-                    UpdateObjective(string.Empty, mistakesDone + "/" + mistakesAllowed, "You can hit a good robot " + (mistakesAllowed - mistakesDone) + " time left");
+                    UpdateObjective(string.Empty, mistakesDone + "/" + mistakesAllowed, "You can damage a good robot " + (mistakesAllowed - mistakesDone) + " time left");
 
                     if (mistakesDone == mistakesAllowed)
                         player.Kill();

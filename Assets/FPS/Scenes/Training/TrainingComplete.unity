@@ -158,7 +158,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 281.8}
-  m_SizeDelta: {x: 352.4888, y: 50}
+  m_SizeDelta: {x: 429.1347, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &132751501
 MonoBehaviour:
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Well Done!
+  m_text: Congratulations
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 75063828274bdb145a55f6dd2f22e8b2, type: 2}
   m_sharedMaterial: {fileID: 21098970014090698, guid: 75063828274bdb145a55f6dd2f22e8b2,
@@ -822,8 +822,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1628732706}
         m_TargetAssemblyTypeName: Unity.FPS.UI.StartButton, fps.UI
-        m_MethodName: getNextScene
-        m_Mode: 5
+        m_MethodName: LoadTargetScene
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1180,8 +1180,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "You completed the Training successfully! \nAre you ready to start the
-    experiment or do you want to train more?"
+  m_text: 'You completed the training session. Do you want to start the experiment
+    or do you want to train more? '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 106dddce1f2404b45bbfa40eab1b84ea, type: 2}
   m_sharedMaterial: {fileID: 21649359081121634, guid: 106dddce1f2404b45bbfa40eab1b84ea,

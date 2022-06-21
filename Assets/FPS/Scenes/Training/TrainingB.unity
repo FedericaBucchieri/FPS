@@ -59217,7 +59217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acc67e279eebe4c63853bb5c1e91058a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quitUI: {fileID: 0}
+  quitUI: {fileID: 1998972706}
   goodButton: {fileID: 1842394959}
   evilButton: {fileID: 1227578568}
   correctUI: {fileID: 810928059}

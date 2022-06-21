@@ -160,7 +160,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6896901864316725273}
   - component: {fileID: 9100134242055059002}
-  - component: {fileID: 5210512099771323384}
+  - component: {fileID: 7597671133358052252}
   m_Layer: 5
   m_Name: TutorialMessage
   m_TagString: Untagged
@@ -200,7 +200,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &5210512099771323384
+--- !u!114 &7597671133358052252
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -209,13 +209,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5210512099771323385}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8fbb5746ac8445f1a63b1e585505032, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b9e8ef5ee2a0447aaaccc649057f29b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CanvasGroup: {fileID: 9100134242055059002}
-  VisibleDuration: 3
+  VisibleDuration: 0
   FadeInDuration: 0.5
-  FadeOutDuration: 0.5
+  FadeOutDuration: 2
 --- !u!1 &5824102127461408786
 GameObject:
   m_ObjectHideFlags: 0

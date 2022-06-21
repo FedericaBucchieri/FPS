@@ -23,12 +23,14 @@ public class InitManager : MonoBehaviour
     {
         if (participantID == null || participantID == "")
         {
+            Debug.Log("null");
             participantError.SetActive(true);
             return;
 
         }
 
         int id = int.Parse(participantID);
+        Debug.Log("id:" + id);
 
         if (id <= 0 | id > 100)
             participantError.SetActive(true);
@@ -58,10 +60,13 @@ public class InitManager : MonoBehaviour
 
         }
 
+        // initialize list
+        SceneFlowManager.testCondition = new List<char>();
+
         foreach (char c in array)
         {
-            SceneFlowManager.testCondition = new List<char>();
             SceneFlowManager.testCondition.Add(c);
+            Debug.Log("Added: " + c);
         }
     }
 
@@ -82,7 +87,7 @@ public class InitManager : MonoBehaviour
     public void StartTrial()
     {
         CreateFile();
-
+        createQuestionnaireFile();
         SceneManager.LoadScene(sceneToLoad);
     }
 
@@ -99,5 +104,18 @@ public class InitManager : MonoBehaviour
 
         GameConstants.logFilePath = path;
 
+    }
+
+    public void createQuestionnaireFile()
+    {
+        // path to user Desktop
+        string path = Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop) + "/Questionnaire_" + GameConstants.participantID + ".txt";
+
+        if (!File.Exists(path))
+        {
+            File.WriteAllText(path, "Participant ID, Date, Test Condition, Current Condition, Answer Value \n");
+        }
+
+        GameConstants.questionnaireFilePath = path;
     }
 }

@@ -35,6 +35,7 @@ namespace Unity.FPS.UI
         {
             char condition = SceneFlowManager.getNextCondition();
 
+            Debug.Log(SceneFlowManager.currentCondition);
             if (condition.Equals('e'))
                 SceneManager.LoadScene("EndGameScene");
             else
