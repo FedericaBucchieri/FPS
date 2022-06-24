@@ -307,7 +307,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'You have to eliminate 10 Evil robots to win
+  m_text: 'You have to eliminate 10 EVIL robots to win.
 
 '
   m_isRightToLeft: 0
@@ -631,8 +631,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 440, y: -294}
-  m_SizeDelta: {x: 449.1457, y: 169.2878}
+  m_AnchoredPosition: {x: 416.46, y: -294}
+  m_SizeDelta: {x: 402.07, y: 169.2878}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1294745434
 MonoBehaviour:
@@ -654,9 +654,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'You are asked to play for 10 minutes. If you win or lose before this time,
-    you will have to play again. The game will automatically count the playing time
-    and end the session when the 10 minutes ends.
+  m_text: 'You are asked to play for 5 minutes. If you win or lose before this time,
+    you will have to play again. The game will automatically stop when the 5 minutes
+    ends.
 
 '
   m_isRightToLeft: 0
@@ -770,8 +770,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 440, y: -58}
-  m_SizeDelta: {x: 449.1457, y: 169.2878}
+  m_AnchoredPosition: {x: 416.4607, y: -58}
+  m_SizeDelta: {x: 402.0671, y: 169.2878}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1338935167
 MonoBehaviour:
@@ -793,7 +793,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Pay attention! If you damage more than 3 Good Robots you will lose the
+  m_text: "Pay attention! If you damage more than 3 GOOD Robots you will lose the
     game instantly. \n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 106dddce1f2404b45bbfa40eab1b84ea, type: 2}
@@ -1235,7 +1235,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10 minutes
+  m_text: 5 minutes
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 75063828274bdb145a55f6dd2f22e8b2, type: 2}
   m_sharedMaterial: {fileID: 21098970014090698, guid: 75063828274bdb145a55f6dd2f22e8b2,
@@ -1371,8 +1371,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: You are about to start the actual experiment. You will play inside a robot
-    factor and your task is to distinguish and eliminate the Evil robots avoiding
-    damaging the Good Robots.
+    factory and your task is to distinguish and eliminate  evil robots avoiding damaging
+    good ones.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 106dddce1f2404b45bbfa40eab1b84ea, type: 2}
   m_sharedMaterial: {fileID: 21649359081121634, guid: 106dddce1f2404b45bbfa40eab1b84ea,

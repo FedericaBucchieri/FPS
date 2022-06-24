@@ -157,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 281.8}
-  m_SizeDelta: {x: 352.4888, y: 50}
+  m_AnchoredPosition: {x: 2.5143, y: 281.8}
+  m_SizeDelta: {x: 887.32, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &132751501
 MonoBehaviour:
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Nicely Done!
+  m_text: You completed the tutorial successfully
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 75063828274bdb145a55f6dd2f22e8b2, type: 2}
   m_sharedMaterial: {fileID: 21098970014090698, guid: 75063828274bdb145a55f6dd2f22e8b2,
@@ -208,8 +208,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 54
-  m_fontSizeBase: 54
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -419,8 +419,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.0211, y: 79.41}
-  m_SizeDelta: {x: 894.395, y: 301.18}
+  m_AnchoredPosition: {x: -1.0211, y: 47.192}
+  m_SizeDelta: {x: 894.395, y: 365.616}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &653382597
 MonoBehaviour:
@@ -773,7 +773,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 187.80383, y: -147}
+  m_AnchoredPosition: {x: 187.80383, y: -247.2}
   m_SizeDelta: {x: 264.6215, y: 56.4289}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1628732703
@@ -920,7 +920,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -187.96, y: -147}
+  m_AnchoredPosition: {x: -187.96, y: -247.2}
   m_SizeDelta: {x: 264.32, y: 56.4289}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1646595229
@@ -935,7 +935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d00865175781e49179bd3172c95f348b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneName: Tutorial
+  SceneName: NewTutorial
 --- !u!114 &1646595230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1180,13 +1180,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'You completed the Tutorial successfully. If you want to restart the Tutorial,
-    you can press the Tutorial button and restart as many times as you want. If you
-    feel confident with the game commands, it''s now time for the first Training
-    session. During this phase, you will learn how to interpret the data visualization
-    under examination. You can repeat each training session as many times as you
-    want, until you feel confident. Take your time, you will not be evaluated during
-    this phase. '
+  m_text: "If you want, you are free to repeat the tutorial as many times as you
+    want. \n\nIf you feel confident with the game commands, it's now time for the
+    first training session. During this phase, you will learn how to interpret the
+    visualization under examination. \n\nYou can repeat each training session as
+    many times as you want, until you feel confident. Take your time, you will not
+    be evaluated during this phase. "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 106dddce1f2404b45bbfa40eab1b84ea, type: 2}
   m_sharedMaterial: {fileID: 21649359081121634, guid: 106dddce1f2404b45bbfa40eab1b84ea,

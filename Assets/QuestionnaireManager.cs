@@ -7,18 +7,17 @@ using UnityEngine.SceneManagement;
 public class QuestionnaireManager : MonoBehaviour
 {
     [SerializeField]
-    private int questionsNumber;
-
-    [SerializeField]
     private GameObject[] conditionImages;
 
     [SerializeField]
     private GameObject greetings;
 
-    private string[] answersValues;
-
     [SerializeField]
     private GameObject activeCanva;
+
+    [SerializeField]
+    private GameObject[] likertScales;
+
 
     private void Start()
     {
@@ -27,8 +26,12 @@ public class QuestionnaireManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        answersValues = new string[questionsNumber];
+        // set visualization image in the canva
+        setCurrentImage();
+    }
 
+    public void setCurrentImage()
+    {
         switch (SceneFlowManager.currentCondition)
         {
             case 'A':
@@ -42,29 +45,9 @@ public class QuestionnaireManager : MonoBehaviour
                 break;
 
         }
-
     }
 
-    public void setAnswer(string value, int index)
-    {
-        if (index > questionsNumber)
-            return;
-
-        Debug.Log("set answer:" + index + " value:" + value);
-        answersValues[index] = value;
-
-    }
-
-    public void sendAnswers()
-    {
-        SendQuestionnaireAnswerEvent sendEvt = new SendQuestionnaireAnswerEvent();
-        sendEvt.answers = answersValues;
-        EventManager.Broadcast(sendEvt);
-
-        displayGreetings();
-    }
-
-    void displayGreetings()
+    public void displayGreetings()
     {
         char condition = SceneFlowManager.getNextCondition();
 

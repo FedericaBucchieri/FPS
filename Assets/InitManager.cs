@@ -99,7 +99,7 @@ public class InitManager : MonoBehaviour
 
         if (!File.Exists(path))
         {
-            File.WriteAllText(path, "Participant ID, Date, Test Condition, Current Condition, Timestamp, Event Type \n");
+            File.WriteAllText(path, "Participant ID,Date,Test Condition,Current Condition,EventID,Timestamp,Event Type\n");
         }
 
         GameConstants.logFilePath = path;
@@ -113,7 +113,7 @@ public class InitManager : MonoBehaviour
 
         if (!File.Exists(path))
         {
-            File.WriteAllText(path, "Participant ID, Date, Test Condition, Current Condition, Answer Value \n");
+            File.WriteAllText(path, "Participant ID,Date,Test Condition,Current Condition,Answer Value,QuestionIndex\n");
         }
 
         GameConstants.questionnaireFilePath = path;
