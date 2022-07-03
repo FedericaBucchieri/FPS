@@ -2,16 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.FPS.Game;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class QuestionnaireLikert : MonoBehaviour
 {
     public QuestionnaireToggleGroup[] toggleGroups;
     int likertSize = 7;
 
+    [SerializeField]
+    Button button; 
 
-    public void hideLikert()
+    CanvasGroup canvasGroup;
+    float transitionTime = 4f;
+    bool startTransition = false;
+    float time = 0f;
+
+    private void Start()
     {
-        this.gameObject.SetActive(false);
+        canvasGroup = GetComponent<CanvasGroup>();
+        button.interactable = false;
     }
 
     public void sendAnswers()
@@ -25,6 +34,51 @@ public class QuestionnaireLikert : MonoBehaviour
             evt.questionIndex = toggleGroups[i].questionIndex.ToString();
             EventManager.Broadcast(evt);
         }
+    }
+
+
+
+
+    public void startCanvasTransition()
+    {
+        startTransition = true;
+        /*
+        float time = 0f;
+
+        while (time < transitionTime)
+        {
+            time += Time.deltaTime;
+            canvasGroup.alpha -= time / transitionTime;
+        }
+
+        this.gameObject.SetActive(false);
+        */
+    }
+
+    private void Update()
+    {
+        bool filled = false;
+
+        foreach (QuestionnaireToggleGroup group in toggleGroups)
+        {
+            filled = group.isOneActive();
+            if (!filled)
+                return;
+
+        }
+
+        if (filled)
+            button.interactable = true;
+
+        if (startTransition)
+        {
+            time += Time.deltaTime;
+            canvasGroup.alpha -= time / transitionTime;
+
+            if(canvasGroup.alpha == 0)
+                this.gameObject.SetActive(false);
+        }
+
     }
 
 }

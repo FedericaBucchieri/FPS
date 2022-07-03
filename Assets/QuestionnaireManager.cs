@@ -15,8 +15,6 @@ public class QuestionnaireManager : MonoBehaviour
     [SerializeField]
     private GameObject activeCanva;
 
-    [SerializeField]
-    private GameObject[] likertScales;
 
 
     private void Start()

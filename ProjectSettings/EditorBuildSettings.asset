@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/FPS/Scenes/Menu Scenes/IntroductionTutorial.unity
     guid: 401d676f69a254a66aa61e97f732fa83
   - enabled: 1
+    path: Assets/FPS/Scenes/Health Visualization/Tutorial.unity
+    guid: cc5b1ba376b084ab09ef075cac2e16b5
+  - enabled: 1
     path: Assets/FPS/Scenes/Menu Scenes/IntroductionTraining.unity
     guid: 66a0a91373ef644f8bb615c25c96a2d4
   - enabled: 1
@@ -62,7 +65,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/FPS/Scenes/Menu Scenes/IntroHealth.unity
     guid: b4ad7df21771f4bebae00e0fd7bfc3c5
-  - enabled: 1
-    path: Assets/FPS/Scenes/NewTutorial.unity
-    guid: 33f77ea8f2b6c41d3a4e0c4d8fb7bbb8
   m_configObjects: {}

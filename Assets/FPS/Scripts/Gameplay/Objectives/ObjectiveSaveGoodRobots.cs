@@ -27,7 +27,7 @@ namespace Unity.FPS.Gameplay
         protected override void Start()
         {
             Title = "Ignore the Good Robots";
-            Description = "Don't damage more than " + mistakesAllowed + " Good robots";
+            Description = "Don't damage more than " + (mistakesAllowed - 1) + " Good robots";
 
             // Always a Secondary Objective, paired with ObjectiveKillEvilRobots
             IsOptional = true;

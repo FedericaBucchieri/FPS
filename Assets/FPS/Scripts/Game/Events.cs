@@ -29,6 +29,8 @@ namespace Unity.FPS.Game
         public static StartTrainingEvent StartTrainingEvent = new StartTrainingEvent();
         public static EndTrainingEvent EndTrainingEvent = new EndTrainingEvent();
         public static QuestionnaireAnswerEvent SendQuestionnaireAnswer = new QuestionnaireAnswerEvent();
+        public static StartTutorialEvent startTutorialEvent = new StartTutorialEvent();
+        public static EndTutorialEvent endTutorialEvent = new EndTutorialEvent();
     }
 
     public class ObjectiveUpdateEvent : GameEvent
@@ -111,5 +113,9 @@ namespace Unity.FPS.Game
         public string answer;
         public string questionIndex;
     }
+
+    public class StartTutorialEvent : GameEvent { }
+
+    public class EndTutorialEvent : GameEvent { }
 
 }

@@ -444,7 +444,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d45b5a9ddbef442edb0b994cb6780b8f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d77d3dc989e47447cbb8203391caa4c6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -793,7 +793,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Pay attention! If you damage more than 3 GOOD Robots you will lose the
+  m_text: "Pay attention! If you damage more than 2 GOOD Robots you will lose the
     game instantly. \n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 106dddce1f2404b45bbfa40eab1b84ea, type: 2}

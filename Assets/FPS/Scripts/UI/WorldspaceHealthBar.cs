@@ -37,7 +37,7 @@ namespace Unity.FPS.UI
             HealthBarImage.fillAmount = healthPercentage;
 
             // rotate health bar to face the camera/player
-                HealthBarPivot.LookAt(Camera.main.transform.position);
+            HealthBarPivot.LookAt(Camera.main.transform.position);
 
             // hide health bar if needed
             if (HideFullHealthBar)
@@ -49,7 +49,9 @@ namespace Unity.FPS.UI
 
                 // the second argument, upwards, defaults to Vector3.up
                 Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
-                canvas.transform.rotation = rotation;
+                //canvas.transform.rotation = rotation;
+                canvas.transform.rotation = new Quaternion(0, rotation.y, rotation.z, rotation.w);
+                HealthBarPivot.transform.rotation = new Quaternion(0, HealthBarPivot.transform.rotation.y, HealthBarPivot.transform.rotation.z, HealthBarPivot.transform.rotation.w);
             }
             
         }

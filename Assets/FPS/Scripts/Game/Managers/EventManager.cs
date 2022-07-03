@@ -59,7 +59,6 @@ namespace Unity.FPS.Game
 
         public static void Broadcast(GameEvent evt)
         {
-   
             // Questionnare answers
             if (evt.GetType().Name == "QuestionnaireAnswerEvent")
                 addAnswer((QuestionnaireAnswerEvent)evt);

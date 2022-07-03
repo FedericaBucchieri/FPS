@@ -336,8 +336,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -269, y: -113.90259}
-  m_SizeDelta: {x: 894.395, y: 143.8051}
+  m_AnchoredPosition: {x: -269, y: -125.13327}
+  m_SizeDelta: {x: 894.395, y: 166.2665}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &492693760
 MonoBehaviour:
@@ -519,7 +519,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u2022 Evil robots behave the same way as good robots. \n\u2022 No robot
     is going to shoot at you, unless you shoot at them first.\n\u2022 Even good robots
-    can shoot at you."
+    can shoot at you.\n\u2022 Evil robots can not become good at any time."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 106dddce1f2404b45bbfa40eab1b84ea, type: 2}
   m_sharedMaterial: {fileID: 21649359081121634, guid: 106dddce1f2404b45bbfa40eab1b84ea,
@@ -631,8 +631,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -269, y: 143.10934}
-  m_SizeDelta: {x: 894.395, y: 173.7813}
+  m_AnchoredPosition: {x: -269, y: 129.94598}
+  m_SizeDelta: {x: 894.395, y: 200.108}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &653382597
 MonoBehaviour:
@@ -1381,9 +1381,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: 'The game is set inside a robot factory. A virus infiltrated in the factory
-    and attacked some robots. Those robots become evil and their health became higher
-    than normal. It is your duty as guardian of the factory to eliminate the evil
-    robots and preserve the good ones. '
+    and infected some robots. Those robots were damaged and became evil: they are
+    trying to sabotage the factory electric system. It is your duty as guardian of
+    the factory to eliminate the evil robots and preserve the good ones. '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 106dddce1f2404b45bbfa40eab1b84ea, type: 2}
   m_sharedMaterial: {fileID: 21649359081121634, guid: 106dddce1f2404b45bbfa40eab1b84ea,

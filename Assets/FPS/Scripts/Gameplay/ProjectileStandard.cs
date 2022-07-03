@@ -184,6 +184,7 @@ namespace Unity.FPS.Gameplay
 
                 if (foundHit)
                 {
+
                     // Handle case of casting while already inside a collider
                     if (closestHit.distance <= 0f)
                     {
@@ -223,6 +224,11 @@ namespace Unity.FPS.Gameplay
 
         void OnHit(Vector3 point, Vector3 normal, Collider collider)
         {
+            if (collider == null)
+                return;
+
+            if (collider.gameObject == null)
+                return;
 
             // damage
             if (AreaOfDamage)
