@@ -1043,7 +1043,7 @@ MonoBehaviour:
   PathReachingRangeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   AttackRangeColor: {r: 1, g: 0, b: 0, a: 1}
   DetectionRangeColor: {r: 0, g: 0, b: 1, a: 1}
-  attacksOnlyOnDamage: 0
+  attacksOnlyOnDamage: 1
 --- !u!114 &4752156053906186385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1059,7 +1059,7 @@ MonoBehaviour:
   Animator: {fileID: 320366457759794871}
   SecondAnimator: {fileID: 0}
   AttackStopDistanceRatio: 1
-  allowFreeNavigation: 0
+  allowFreeNavigation: 1
   navigationRadius: 5
   sensibilityOfDistance: 0.5
   totalNavigationTime: 3

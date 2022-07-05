@@ -10,7 +10,7 @@ namespace Unity.FPS.Gameplay
 
         [SerializeField]
         [Tooltip("Total number of evil robot to eliminate")]
-        private int evilRobotNumber = 10;
+        private int evilRobotNumber = 8;
 
         private int evilRobotEliminated = 0;
 
@@ -25,7 +25,7 @@ namespace Unity.FPS.Gameplay
 
         private static int[] healthValues = { 18, 32, 43, 58, 72, 83 };
         private int currentIndex = 0;
-        private int robotPerValue = 5;
+        private int robotPerValue = 4;
         private float healthThreeshold = 66f;
 
         // Use this for initialization
@@ -54,18 +54,23 @@ namespace Unity.FPS.Gameplay
             {
                 for(int i = currentIndex; i < currentIndex + robotPerValue; i++)
                 {
-                    Actor actor = robots[i].GetComponent<Actor>();
-                    Health health = robots[i].GetComponent<Health>();
-                    health.CurrentHealth = healthValue;
-
-                    if (healthValue > healthThreeshold)
-                        actor.Affiliation = EVIL;
-                    else
-                        actor.Affiliation = GOOD;
+                    generateHealth(i, healthValue);
                 }
                 currentIndex += robotPerValue;
                 
             }
+        }
+
+        void generateHealth(int i, int healthValue)
+        {
+            Actor actor = robots[i].GetComponent<Actor>();
+            Health health = robots[i].GetComponent<Health>();
+            health.CurrentHealth = healthValue;
+
+            if (healthValue > healthThreeshold)
+                actor.Affiliation = EVIL;
+            else
+                actor.Affiliation = GOOD;
         }
 
         public GameObject[] Shuffle(GameObject[] objectList)

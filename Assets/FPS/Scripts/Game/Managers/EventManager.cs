@@ -59,12 +59,13 @@ namespace Unity.FPS.Game
 
         public static void Broadcast(GameEvent evt)
         {
+            /*
             // Questionnare answers
             if (evt.GetType().Name == "QuestionnaireAnswerEvent")
                 addAnswer((QuestionnaireAnswerEvent)evt);
             else         // Logging events
                 addRecord(evt.GetType().Name);
-
+            */
             if (s_Events.TryGetValue(evt.GetType(), out var action))
             {
                 action.Invoke(evt);
@@ -80,7 +81,7 @@ namespace Unity.FPS.Game
         public static void addRecord(string eventType)
         {
                 DateTime dt = DateTime.Now;
-                string log = GameConstants.participantID + "," + dt.ToString("dd-MM-yyyy") + "," + SceneFlowManager.getTestCondition() + "," + SceneFlowManager.currentCondition + "," + eventID + "," + dt.ToString("HH:mm:ss") + ":" + dt.Millisecond + "," + eventType + "\n";
+                string log = GameConstants.participantID + "," + dt.ToString("dd-MM-yyyy") + "," + SceneFlowManager.getTestCondition() + "," + SceneFlowManager.currentCondition + "," + eventID + "," + dt.ToString("HH:mm:ss") + "." + dt.Millisecond + "," + eventType + "\n";
                 File.AppendAllText(GameConstants.logFilePath, log);
                 eventID++;
         }
@@ -88,7 +89,7 @@ namespace Unity.FPS.Game
         public static void addAnswer(QuestionnaireAnswerEvent evt)
         {
             DateTime dt = DateTime.Now;
-            string log = GameConstants.participantID + "," + dt.ToString("dd-MM-yyyy") + "," + SceneFlowManager.getTestCondition() + "," + SceneFlowManager.currentCondition + "," + dt.ToString("HH:mm:ss") + ":" + dt.Millisecond + "," + evt.answer + "," + evt.questionIndex + "\n";
+            string log = GameConstants.participantID + "," + dt.ToString("dd-MM-yyyy") + "," + SceneFlowManager.getTestCondition() + "," + SceneFlowManager.currentCondition + "," + dt.ToString("HH:mm:ss") + "." + dt.Millisecond + "," + evt.answer + "," + evt.questionIndex + "\n";
             File.AppendAllText(GameConstants.questionnaireFilePath, log);
 
         }

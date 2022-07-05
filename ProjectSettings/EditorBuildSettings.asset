@@ -28,13 +28,13 @@ EditorBuildSettings:
     guid: 03af52e53b3004a6da6c5afa19c8e49d
   - enabled: 1
     path: Assets/FPS/Scenes/Health Visualization/HealthA.unity
-    guid: 0d99ccd54d93140c39e368f691cfc987
+    guid: 0b2690f662c15449e8762143029bd73f
   - enabled: 1
     path: Assets/FPS/Scenes/Health Visualization/HealthB.unity
-    guid: e33ac1987995f4c389abf6b9447d81d3
+    guid: 596ac0037cd1b4ccd83c4e28f3674285
   - enabled: 1
     path: Assets/FPS/Scenes/Health Visualization/HealthC.unity
-    guid: b74667b5ce3c04d80b3791631ff7448e
+    guid: 5ae3f65db4c0a4835b1a6d60f5e715dc
   - enabled: 1
     path: Assets/FPS/Scenes/Menu Scenes/WinScene.unity
     guid: 037d06fbede2b4041a843d9ee6fe750c

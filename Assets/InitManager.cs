@@ -88,6 +88,10 @@ public class InitManager : MonoBehaviour
     {
         CreateFile();
         createQuestionnaireFile();
+
+        StartTrialEvent evt = new StartTrialEvent();
+        EventManager.Broadcast(evt);
+
         SceneManager.LoadScene(sceneToLoad);
     }
 

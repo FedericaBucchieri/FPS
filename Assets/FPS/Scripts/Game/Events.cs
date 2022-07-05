@@ -20,6 +20,7 @@ namespace Unity.FPS.Game
         public static DisplayMessageEvent DisplayMessageEvent = new DisplayMessageEvent();
         public static TrainingEvent TrainingEvent = new TrainingEvent();
         public static CorrectTrainingEvent CorrectTrainingEvent = new CorrectTrainingEvent();
+        public static WrongTrainingEvent WrongTrainingEvent = new WrongTrainingEvent();
         public static HitGoodRobotEvent HitGoodRobotEvent = new HitGoodRobotEvent();
         public static HitEvilRobotEvent HitEvilRobotEvent = new HitEvilRobotEvent();
         public static KillEvilRobotEvent KillEvilRobotEvent = new KillEvilRobotEvent();
@@ -92,6 +93,8 @@ namespace Unity.FPS.Game
     }
 
     public class CorrectTrainingEvent: GameEvent { }
+
+    public class WrongTrainingEvent: GameEvent { }
 
     public class HitGoodRobotEvent : GameEvent { }
 

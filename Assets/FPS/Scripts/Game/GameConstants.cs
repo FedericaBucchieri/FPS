@@ -42,7 +42,7 @@ namespace Unity.FPS.Game
         public static int number_of_trials = 1;
         public static float totalTrialTime = 300f;
         public static float playedTrialTime = 0f;
-        public static int minTrainingNumber = 1; 
+        public static int minTrainingNumber = 5; 
 
     }
 }
