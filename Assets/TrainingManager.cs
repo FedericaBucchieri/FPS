@@ -80,7 +80,11 @@ namespace Unity.FPS.Gameplay
                     EventManager.Broadcast(correctLog);
                 }
                 else
+                {
                     wrongUI.SetActive(true);
+                    WrongTrainingEvent wrongEvt = new WrongTrainingEvent();
+                    EventManager.Broadcast(wrongEvt);
+                }
 
                 healthValueUI.SetActive(true);
                 healthValue.text = " Health Value: " + (int)currentEnemyHealth.CurrentHealth + "%";
