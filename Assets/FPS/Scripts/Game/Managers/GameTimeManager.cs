@@ -42,6 +42,6 @@ public class GameTimeManager : MonoBehaviour
 
 
         // go to in game questionnaire
-        SceneManager.LoadScene("ChangeConditionScene");
+        SceneManager.LoadScene("QuestionnaireScene");
     }
 }
