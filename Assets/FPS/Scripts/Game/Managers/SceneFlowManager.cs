@@ -33,8 +33,6 @@ public class SceneFlowManager
                 currentCondition = testCondition[index + 1];
         }
 
-        Debug.Log("Change condition to " + currentCondition);
-
         return currentCondition;
     }
 

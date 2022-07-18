@@ -7,7 +7,7 @@ public class ProgressBar : MonoBehaviour
 {
 
     Image progressBar;
-    float factor = 0.33f;
+    float factor = 0.5f;
 
     private void Start()
     {

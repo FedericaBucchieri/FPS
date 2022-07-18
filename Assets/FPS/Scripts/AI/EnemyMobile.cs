@@ -11,7 +11,6 @@ namespace Unity.FPS.AI
             Patrol,
             Follow,
             Attack,
-            Navigating,
         }
 
         public Animator Animator;

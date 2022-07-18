@@ -42,17 +42,6 @@ public class QuestionnaireLikert : MonoBehaviour
     public void startCanvasTransition()
     {
         startTransition = true;
-        /*
-        float time = 0f;
-
-        while (time < transitionTime)
-        {
-            time += Time.deltaTime;
-            canvasGroup.alpha -= time / transitionTime;
-        }
-
-        this.gameObject.SetActive(false);
-        */
     }
 
     private void Update()

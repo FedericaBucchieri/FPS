@@ -343,6 +343,7 @@ namespace Unity.FPS.AI
             }
         }
 
+
         public Vector3 RandomNavDestination(float radius) // Prova a farli muovere a tempo e non a spazio
         {
             Vector3 randomDirection = transform.position + Random.insideUnitSphere * radius;
@@ -355,10 +356,6 @@ namespace Unity.FPS.AI
             return finalPosition;
         }
 
-        public Vector3 getRandomNavigationDestination()
-        {
-            return finalPosition;
-        }
 
         void OnDamaged(float damage, GameObject damageSource)
         {
